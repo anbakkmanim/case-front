@@ -46,6 +46,10 @@ export default new Router({
           component: () => import('./views/ResetPassword.vue'),
         },
         {
+          path: '/forgetpassword',
+          component: () => import('./views/ForgotPassword.vue'),
+        },
+        {
           path: '/404',
           component: () => import('./views/404.vue'),
         },

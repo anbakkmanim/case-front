@@ -7,8 +7,8 @@
             <div class="vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center">
               <img src="@/assets/images/pages/reset-password.png" alt="login" class="mx-auto">
             </div>
-            <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center  d-theme-dark-bg">
-              <div class="p-8">
+            <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center  bg-white">
+              <div class="p-8 text-left">
                   <div class="vx-card__title mb-8">
                     <h4 class="mb-4">Reset Password</h4>
                     <p>Please enter your new password.</p>

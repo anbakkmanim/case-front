@@ -7,13 +7,13 @@
             <div class="vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center">
               <img src="@/assets/images/pages/register.jpg" alt="register" class="mx-auto">
             </div>
-            <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center  d-theme-dark-bg">
+            <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center bg-white">
               <div class="p-8">
-                <div class="vx-card__title">
+                <div class="vx-card__title text-left">
                   <h4 class="mb-4">Create Account</h4>
                   <p>Fill the below form to create a new account.</p>
                 </div>
-                <div class="clearfix">
+                <div class="clearfix text-left">
                   <vs-input
                       v-validate="'required|alpha_dash|min:3'"
                       data-vv-validate-on="blur"

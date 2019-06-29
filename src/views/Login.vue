@@ -7,9 +7,9 @@
             <div class="vx-col hidden lg:block lg:w-1/2">
               <img src="@/assets/images/pages/login.png" alt="login" class="mx-auto">
             </div>
-            <div class="vx-col sm:w-full md:w-full lg:w-1/2 d-theme-dark-bg">
+            <div class="vx-col sm:w-full md:w-full lg:w-1/2 bg-white">
               <div class="p-8">
-                <div class="vx-card__title mb-8">
+                <div class="vx-card__title mb-8 text-left">
                   <h4 class="mb-4">Login</h4>
                   <p>Welcome back, please login to your account.</p>
                 </div>
@@ -21,7 +21,7 @@
                     icon-pack="feather"
                     label-placeholder="Email"
                     v-model="email"
-                    class="w-full no-icon-border"/>
+                    class="w-full no-icon-border text-left"/>
                 <span class="text-danger text-sm">{{ errors.first('email') }}</span>
 
                 <vs-input
@@ -33,16 +33,18 @@
                     icon-pack="feather"
                     label-placeholder="Password"
                     v-model="password"
-                    class="w-full mt-6 no-icon-border" />
+                    class="w-full mt-6 no-icon-border text-left" />
                 <span class="text-danger text-sm">{{ errors.first('password') }}</span>
 
                 <div class="flex flex-wrap justify-between my-5">
                   <vs-checkbox v-model="checkbox_remember_me" class="mb-3">Remember Me</vs-checkbox>
                   <router-link to="/pages/forgot-password">Forgot Password?</router-link>
                 </div>
-                <vs-button type="border" @click="registerUser">Register</vs-button>
-                <vs-button class="float-right" :disabled="!validateForm" @click="login">Login</vs-button>
 
+                <div class="flex flex-wrap justify-between flex-col-reverse sm:flex-row">
+                  <vs-button type="border" class="float-left" @click="registerUser">Register</vs-button>
+                  <vs-button class="float-right" :disabled="!validateForm" @click="login">Login</vs-button>
+                </div>
                 <vs-divider>OR</vs-divider>
 
                 <div class="social-login flex flex-wrap justify-between">

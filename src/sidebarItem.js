@@ -61,6 +61,10 @@ export default [
         name: '패스워드 재설정',
       },
       {
+        url: '/forgetpassword',
+        name: '패스워드 찾기',
+      },
+      {
         url: '/404',
         name: '404 페이지',
       },
