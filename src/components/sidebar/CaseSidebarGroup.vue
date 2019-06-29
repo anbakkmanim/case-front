@@ -66,7 +66,6 @@
 
 <script>
 import VxSidebarItem from './CaseSidebarItem.vue';
-import FeatherIcon from '../FeatherIcon.vue';
 
 export default {
   name: 'vx-sidebar-group',
@@ -209,7 +208,6 @@ export default {
   },
   components: {
     VxSidebarItem,
-    FeatherIcon,
   },
   mounted() {
     this.openItems = this.open;

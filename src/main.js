@@ -19,6 +19,11 @@ import '@/assets/css/main.css';
 // Vuesax 테마 설정
 import '../themeConfig';
 
+// FeatherIcon 사용
+import FeatherIcon from './components/FeatherIcon.vue';
+
+Vue.component(FeatherIcon.name, FeatherIcon);
+
 // Vee Validate (form 검사기) 설정
 Vue.use(VeeValidate);
 Vue.use(Plugin);

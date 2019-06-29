@@ -103,7 +103,6 @@
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
 import VxSidebarGroup from './CaseSidebarGroup.vue';
 import VxSidebarItem from './CaseSidebarItem.vue';
-import FeatherIcon from '../FeatherIcon.vue';
 
 export default {
   name: 'case-sidebar',
@@ -265,7 +264,6 @@ export default {
     VxSidebarGroup,
     VxSidebarItem,
     VuePerfectScrollbar,
-    FeatherIcon,
   },
   mounted() {
     this.$nextTick(() => {

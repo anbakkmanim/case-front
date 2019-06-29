@@ -17,7 +17,7 @@ const themeConfig = {
   theme: 'light',
   sidebarCollapsed: false,
   navbarColor: '#fff',
-  navbarType: 'floating',
+  navbarType: 'sticky',
   footerType: 'static',
   routerTransition: 'zoom-fade',
   disableCustomizer: false,

@@ -5,7 +5,7 @@
   >
     <case-sidebar
       :sidebarItems="sidebarItems"
-      title="Vuesax"
+      title="Case"
       parent=".layout--main"
     />
 
@@ -16,13 +16,13 @@
       <div id="content-overlay"></div>
 
       <div class="content-wrapper">
-        <!-- <the-navbar
+        <case-header
           :navbarColor="navbarColor"
           :class="[
             { 'text-white': isNavbarDark && !isThemeDark },
             { 'text-base': !isNavbarDark && isThemeDark }
           ]"
-        /> -->
+        />
 
         <div class="router-view">
           <div
@@ -104,6 +104,7 @@
 
 <script>
 import CaseSidebar from '../components/sidebar/CaseSidebar.vue';
+import CaseHeader from '../components/header/CaseHeader.vue';
 // import TheNavbar from '../components/TheNavbar.vue';
 // import TheFooter from '../components/TheFooter.vue';
 import sidebarItems from '../sidebarItem';
@@ -111,7 +112,7 @@ import sidebarItems from '../sidebarItem';
 export default {
   data() {
     return {
-      navbarType: 'floating',
+      navbarType: 'sticky',
       navbarColor: '#fff',
       footerType: 'static',
       routerTransition: 'none',
@@ -211,6 +212,7 @@ export default {
   },
   components: {
     CaseSidebar,
+    CaseHeader,
     // TheNavbar,
     // TheFooter,
     // TheCustomizer,

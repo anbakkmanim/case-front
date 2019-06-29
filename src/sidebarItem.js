@@ -22,14 +22,12 @@ export default [
     icon: 'HomeIcon',
     submenu: [
       {
-        url: '/dashboard/analytics',
-        name: 'Analytics',
-        slug: 'dashboardAnalytics',
+        url: '/home',
+        name: '홈 화면',
       },
       {
-        url: '/dashboard/ecommerce',
-        name: 'eCommerce',
-        slug: 'dashboardECommerce',
+        url: '/test',
+        name: '테스트 화면',
       },
     ],
   },
