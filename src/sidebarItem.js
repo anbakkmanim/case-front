@@ -49,6 +49,18 @@ export default [
         name: '풀 페이지 테스트',
       },
       {
+        url: '/login',
+        name: '로그인',
+      },
+      {
+        url: '/register',
+        name: '회원가입',
+      },
+      {
+        url: '/resetpassword',
+        name: '패스워드 재설정',
+      },
+      {
         url: '/404',
         name: '404 페이지',
       },

@@ -34,6 +34,18 @@ export default new Router({
           component: () => import('./views/Home.vue'),
         },
         {
+          path: '/login',
+          component: () => import('./views/Login.vue'),
+        },
+        {
+          path: '/register',
+          component: () => import('./views/Register.vue'),
+        },
+        {
+          path: '/resetpassword',
+          component: () => import('./views/ResetPassword.vue'),
+        },
+        {
           path: '/404',
           component: () => import('./views/404.vue'),
         },
