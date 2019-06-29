@@ -33,6 +33,18 @@ export default new Router({
           path: '/fullpage',
           component: () => import('./views/Home.vue'),
         },
+        {
+          path: '/404',
+          component: () => import('./views/404.vue'),
+        },
+        {
+          path: '/500',
+          component: () => import('./views/500.vue'),
+        },
+        {
+          path: '*',
+          component: () => import('./views/404.vue'),
+        },
       ],
     },
   ],

@@ -48,6 +48,14 @@ export default [
         url: '/fullpage',
         name: '풀 페이지 테스트',
       },
+      {
+        url: '/404',
+        name: '404 페이지',
+      },
+      {
+        url: '/500',
+        name: '500페이지',
+      },
     ],
   },
 ];
