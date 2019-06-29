@@ -19,6 +19,20 @@ export default new Router({
           path: '/test',
           component: () => import('./views/Test.vue'),
         },
+        {
+          path: '/hello',
+          component: () => import('./views/Hello.vue'),
+        },
+      ],
+    },
+    {
+      path: '',
+      component: () => import('./layouts/Fullpage.vue'),
+      children: [
+        {
+          path: '/fullpage',
+          component: () => import('./views/Home.vue'),
+        },
       ],
     },
   ],

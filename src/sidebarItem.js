@@ -29,9 +29,25 @@ export default [
         url: '/test',
         name: '테스트 화면',
       },
+      {
+        url: '/hello',
+        name: '테스트 화면2',
+      },
     ],
   },
   {
     header: '헤더 테스트',
+  },
+  {
+    url: null,
+    name: '풀페이지',
+    slug: 'fullpage',
+    icon: 'HomeIcon',
+    submenu: [
+      {
+        url: '/fullpage',
+        name: '풀 페이지 테스트',
+      },
+    ],
   },
 ];
