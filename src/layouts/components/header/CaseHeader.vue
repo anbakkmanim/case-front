@@ -82,7 +82,7 @@
 
 <script>
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-import CaseAutoSuggest from '../auto-suggest/AutoSuggest.vue';
+import CaseAutoSuggest from '@/components/auto-suggest/AutoSuggest.vue';
 
 export default {
   name: 'case-header',

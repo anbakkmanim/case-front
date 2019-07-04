@@ -43,17 +43,17 @@
                 >
                   <h2 class="mb-1">{{ routeTitle }}</h2>
                 </div>
-                <vx-breadcrumb
+                <case-breadcrumb
                   class="ml-4 md:block hidden"
                   v-if="$route.meta.breadcrumb"
                 />
+                <!--  현재 사용 안함
                 <vs-dropdown class="ml-auto md:block hidden" vs-trigger-click>
                   <vs-button
                     radius
                     icon="icon-settings"
                     icon-pack="feather"
                   ></vs-button>
-
                   <vs-dropdown-menu class="w-32">
                     <vs-dropdown-item
                       ><router-link
@@ -86,6 +86,7 @@
                     >
                   </vs-dropdown-menu>
                 </vs-dropdown>
+                -->
               </div>
             </transition>
             <div class="content-area__content">
@@ -103,10 +104,9 @@
 </template>
 
 <script>
-import CaseSidebar from '../components/sidebar/CaseSidebar.vue';
-import CaseHeader from '../components/header/CaseHeader.vue';
-// import TheNavbar from '../components/TheNavbar.vue';
-// import TheFooter from '../components/TheFooter.vue';
+import CaseSidebar from './components/sidebar/CaseSidebar.vue';
+import CaseHeader from './components/header/CaseHeader.vue';
+import CaseBreadcrumb from './components/breadcrumb/CaseBreadcrumb.vue';
 import sidebarItems from '../sidebarItem';
 
 export default {
@@ -203,6 +203,7 @@ export default {
     },
   },
   created() {
+    console.log(this.$route);
     this.setSidebarWidth();
     if (this.navbarColor === '#fff' && this.isThemeDark) {
       this.updateNavbarColor('#10163a');
@@ -213,9 +214,7 @@ export default {
   components: {
     CaseSidebar,
     CaseHeader,
-    // TheNavbar,
-    // TheFooter,
-    // TheCustomizer,
+    CaseBreadcrumb,
   },
 };
 </script>

@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import FeatherIcon from '../FeatherIcon.vue';
+import FeatherIcon from '@/components/FeatherIcon.vue';
 
 export default {
   name: 'VxSidebarItem',

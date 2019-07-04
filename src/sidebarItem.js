@@ -33,6 +33,17 @@ export default [
         url: '/hello',
         name: '테스트 화면2',
       },
+      {
+        url: null,
+        name: '설문조사 추가',
+        icon: 'PlusSquareIcon',
+        submenu: [
+          {
+            url: '/survay/create/tournament',
+            name: '토너먼트형 추가',
+          },
+        ],
+      },
     ],
   },
   {
