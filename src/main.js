@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import { Plugin } from 'vue-fragment';
+import VueFormWizard from 'vue-form-wizard';
 import App from './App.vue';
 import router from './router';
 import store from './store/store';
@@ -22,11 +23,17 @@ import '../themeConfig';
 // FeatherIcon 사용
 import FeatherIcon from './components/FeatherIcon.vue';
 
+// Vue Form Wizard CSS 사용
+import 'vue-form-wizard/dist/vue-form-wizard.min.css';
+
 Vue.component(FeatherIcon.name, FeatherIcon);
 
 // Vee Validate (form 검사기) 설정
 Vue.use(VeeValidate);
 Vue.use(Plugin);
+
+// Vue Form Wizard 사용
+Vue.use(VueFormWizard);
 
 Vue.config.productionTip = false;
 
