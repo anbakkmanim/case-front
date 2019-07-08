@@ -21,13 +21,13 @@ import '@/assets/css/main.css';
 // Vuesax 테마 설정
 import '../themeConfig';
 
-// FeatherIcon 사용
-import FeatherIcon from './components/FeatherIcon.vue';
 
 // Vue Form Wizard CSS 사용
 import 'vue-form-wizard/dist/vue-form-wizard.min.css';
 
-Vue.component(FeatherIcon.name, FeatherIcon);
+// Global Component 등록
+import './globalComponent';
+
 
 // Vee Validate (form 검사기) 설정
 Vue.use(VeeValidate);
