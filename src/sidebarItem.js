@@ -46,6 +46,10 @@ export default [
             url: '/survay/create/tournament',
             name: '토너먼트형 추가',
           },
+          {
+            url: '/survay/create/selection',
+            name: '선택형 추가',
+          },
         ],
       },
     ],
