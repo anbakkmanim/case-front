@@ -5,7 +5,7 @@
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.scss": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.js": "none",
   "vetur.experimental.templateInterpolationService": false,
   "eslint.validate": [
     "javascript",
@@ -14,5 +14,5 @@
       "language": "vue",
       "autoFix": true
     }
-  ]
+  ],
 }
