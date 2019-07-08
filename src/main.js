@@ -38,7 +38,7 @@ Vue.use(VueFormWizard);
 
 // Vue Axios 사용
 Vue.prototype.$http = Axios.create({
-  baseURL: 'http://10.80.161.110:8000',
+  baseURL: 'http://10.80.161.110:8000/api',
 });
 
 Vue.config.productionTip = false;

@@ -66,7 +66,7 @@
             v-for="i in selectCount"
             :key="i"
           >
-            <tournament-item />
+            <tournament-item :idx="qu_idx" />
           </div>
         </div>
       </tab-content>
@@ -88,6 +88,7 @@ export default {
       selectCount: 4,
       tags: ['computer', 'test', 'test2'],
       tagInfo: '',
+      qu_idx: 0,
     };
   },
   methods: {
@@ -99,16 +100,28 @@ export default {
       if (e.keyCode === 13 && this.tagInfo.length > 0) {
         this.tags.push(this.tagInfo);
         this.tagInfo = '';
+        e.preventDefault();
       }
     },
     validate(step) {
       return () => new Promise((resolve, reject) => {
         this.$validator.validateAll(step).then((result) => {
           if (result) {
-            // if (step === "step1") {
-            // this.$http.post("/api/")
-            // }
-            resolve(true);
+            if (step === 'step1') {
+              this.$http.post('/case/addQuiz', {
+                question: this.title,
+                table: 'example',
+                type: 'tournament',
+              })
+                .then(({ data }) => {
+                  this.qu_idx = data.idx;
+                  resolve(true);
+                })
+                .catch((e) => {
+                  console.error(e);
+                  reject(new Error('퀴즈 추가 실패'));
+                });
+            }
           } else {
             reject(new Error('correct all value'));
           }

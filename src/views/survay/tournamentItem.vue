@@ -33,16 +33,36 @@ import FileUpload from 'vue-upload-component';
 export default {
   data() {
     return {
-      title: '',
+      title: '제목',
       images: [],
       isSet: true,
     };
   },
   methods: {
     onAddFile(newFile, oldFile, prevent) {
+      if (this.title.length < 1) {
+        this.alert('제목을 작성하고 이미지를 업로드 해주세요');
+        prevent();
+      }
       console.log(this.images);
       console.log(newFile, oldFile, prevent);
-      this.isSet = false;
+      const formData = new FormData();
+      formData.append('media', newFile.file);
+      formData.append('quiz', this.idx);
+      formData.append('explain', this.title);
+
+      this.$http.post('/case/addColumn', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then(({ data }) => {
+        if (data) {
+          this.isSet = false;
+        }
+      }).catch((err) => {
+        console.log(err);
+        this.alert('저장 오류');
+      });
     },
     onFilterFile(newFile, oldFile, prevent) {
       if (newFile && !oldFile) {
@@ -62,6 +82,7 @@ export default {
   },
   name: 'tournament-item',
   components: { FileUpload },
+  props: ['idx'],
 };
 </script>
 
