@@ -34,6 +34,10 @@ export default new Router({
           component: () => import('./views/Hello.vue'),
         },
         {
+          path: '/profile',
+          component: () => import('./views/Profile.vue'),
+        },
+        {
           path: '/survay/create/tournament',
           component: () => import('./views/survay/tournament.vue'),
           meta: {

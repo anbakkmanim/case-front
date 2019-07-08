@@ -34,6 +34,10 @@ export default [
         name: '테스트 화면2',
       },
       {
+        url: '/profile',
+        name: '프로필',
+      },
+      {
         url: null,
         name: '설문조사 추가',
         icon: 'PlusSquareIcon',
