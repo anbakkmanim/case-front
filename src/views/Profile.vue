@@ -21,10 +21,6 @@
                     <div>
                         <vs-avatar class="user-profile-img" :src="require(`@/assets/images/profile/user-uploads/${userInfo.profileImg}`)" size="85px" />
                     </div>
-                    <div class="profile-actions pointer-events-auto flex">
-                        <vs-button icon-pack="feather" radius icon="icon-edit-2"></vs-button>
-                        <vs-button icon-pack="feather" radius icon="icon-settings" class="ml-2 lg:ml-4"></vs-button>
-                    </div>
                 </div>
             </div>
             <div class="flex items-center justify-end flex-wrap profile-header-nav p-6">
@@ -54,62 +50,31 @@
         <div class="vx-row">
           <!-- COL 1 -->
           <div class="vx-col w-full lg:w-1/3 mt-8">
-            <vs-card title="About" class="mt-base text-left">
-                <template slot="actions">
-                    <feather-icon icon="MoreHorizontalIcon"></feather-icon>
-                </template>
-                <div class="user-bio text-xl font-bold m-5">
-                    <p>보유현황</p>
-                </div>
-                <hr>
+            <case-card title="보유현황" class="mt-base p-4 text-left">
+              <hr>
               <div class="text-lg text-yellow-500 m-8 float-right">0원</div>
               <div class="text-lg text-gray-800 m-8">나의 크레딧</div>
               <div class="mt-5">
                   <vs-button class="ml-8 mb-4" type="border" color="#CE9FFC">충전하기</vs-button>
               </div>
-            </vs-card>
+            </case-card>
           </div>
 
             <!-- COL 2 -->
             <div class="vx-col w-full lg:w-2/3 mt-8">
-                <vs-card class="mt-base" v-for="(post, index) in userPosts" :key="index">
+                <case-card class="mt-base p-4 text-left" v-for="(post, index) in userPosts" :key="index" title="사용내역">
+                  <hr>
                     <div>
-                        <!-- POST HEADER -->
-                        <div class="post-header flex justify-between mb-4">
-                            <div class="flex items-center">
-                                <div>
-                                    <vs-avatar class="m-0" :src="require(`@/assets/images/profile/user-uploads/${userLatestPhotos[0]}`)" size="45px"></vs-avatar>
-                                </div>
-                                <div class="ml-4">
-                                    <h6>{{ post.author }}</h6>
-                                    <small>{{ post.time | date(true) }} at {{ post.time | time }}</small>
-                                </div>
-                            </div>
-                            <div class="flex">
-                                <feather-icon class="ml-4" icon="HeartIcon" :svgClasses="{'text-danger fill-current stroke-current': post.isLiked}"></feather-icon>
-                            </div>
+                      <div class="">
+                        <div class="text-base text-gray-600 m-8 float-left">25일 토</div>
+                        <div class="text-xl text-yellow-500 mt-8 mr-8 float-right">+ 1,000 p</div>
+                        <div class="vx-col m-8">
+                          <div class="text-lg text-gray-800">abc</div>
+                          <div class="text-xl font-bold mt-5">대소고 설문조사 응시</div>
                         </div>
-
-                        <!-- POST CONTENT -->
-                        <div class="post-content">
-                            <p>{{ post.text }}</p>
-                        </div>
-                        <div class="post-media-container mb-6 mt-4">
-                            <ul class="flex post-media-list">
-                                <li class="post-media m-1 w-full" v-for="(media, mediaIdex) in post.media.slice(0, 2)" :key="mediaIdex">
-                                    <img class="responsive rounded" :src="require(`@/assets/images/profile/post-media/${media.img}`)" alt="user-upload" v-if="mediaType(media) == 'image'">
-                                    <video-player ref="player" class="media-video-player" :options="playerOptions(media)" v-else-if="mediaType(media) == 'video'" />
-                                    <span class="text-lg text-primary" v-else>Unknown Media Type</span>
-                                </li>
-                            </ul>
-                            <span class="flex justify-end" v-if="post.media.length > 2">
-                                <a class="inline-flex items-center text-sm" href=""><span>View All</span> <feather-icon icon="ChevronsRightIcon" svgClasses="h-4 w-4"></feather-icon></a>
-                            </span>
-                        </div>
-
-
+                      </div>
                     </div>
-                </vs-card>
+                </case-card>
             </div>
 
         </div>

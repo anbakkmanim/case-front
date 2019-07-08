@@ -25,6 +25,16 @@
                   <span class="text-danger text-sm">{{ errors.first('username') }}</span>
 
                   <vs-input
+                      v-validate="'required|alpha_dash'"
+                      data-vv-validate-on="blur"
+                      label-placeholder="Account"
+                      name="account"
+                      placeholder="account"
+                      v-model="account"
+                      class="w-full" />
+                  <span class="text-danger text-sm">{{ errors.first('account') }}</span>
+
+                  <vs-input
                       v-validate="'required|email'"
                       data-vv-validate-on="blur"
                       name="email"
@@ -39,7 +49,6 @@
                       ref="password"
                       type="password"
                       data-vv-validate-on="blur"
-                      v-validate="'required|min:6|max:10'"
                       name="password"
                       label-placeholder="Password"
                       placeholder="Password"
@@ -49,7 +58,7 @@
 
                   <vs-input
                       type="password"
-                      v-validate="'min:6|max:10|confirmed:password'"
+                      v-validate="'confirmed:password'"
                       data-vv-validate-on="blur"
                       data-vv-as="password"
                       name="confirm_password"
@@ -77,6 +86,7 @@ export default {
   data() {
     return {
       username: '',
+      account: '',
       email: '',
       password: '',
       confirm_password: '',
