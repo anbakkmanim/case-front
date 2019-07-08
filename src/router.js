@@ -50,6 +50,19 @@ export default new Router({
             ],
           },
         },
+        {
+          path: '/survay/create/selection',
+          component: () => import('./views/survay/selection.vue'),
+          meta: {
+            pageTitle: '선택형 퀴즈 추가',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '설문조사', url: '/survay' },
+              { title: '설문조사 추가', url: '/survay/create' },
+              { title: '선택형 퀴즈 추가', active: true },
+            ],
+          },
+        },
       ],
     },
     {

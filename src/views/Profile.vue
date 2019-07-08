@@ -52,95 +52,27 @@
 
         <!-- COL AREA -->
         <div class="vx-row">
-            <!-- COL 1 -->
-            <div class="vx-col w-full lg:w-1/4">
-                <!-- ABOUT CARD -->
-
-                <vx-card title="About" class="mt-base text-left">
-                    <!-- ACTION SLOT -->
-                    <template slot="actions">
-                        <feather-icon icon="MoreHorizontalIcon"></feather-icon>
-                    </template>
-
-                    <!-- USER BIO -->
-                    <div class="user-bio">
-                        <p>Tart I love sugar plum I love oat cake. Sweet roll caramels I love jujubes. Topping cake wafer.</p>
-                    </div>
-
-                    <!-- OTEHR DATA -->
-                    <div class="mt-5">
-                        <h6>Joined:</h6>
-                        <p>November 15, 2015</p>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6>Lives:</h6>
-                        <p>New York, USA</p>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6>Email:</h6>
-                        <p>bucketful@fiendhead.org</p>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6>Website:</h6>
-                        <p>www.pixinvent.com</p>
-                    </div>
-
-                    <div class="social-links flex mt-4">
-                        <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="FacebookIcon"></feather-icon>
-                        <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="TwitterIcon"></feather-icon>
-                        <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="InstagramIcon"></feather-icon>
-                    </div>
-                </vx-card>
-
-                <!-- PAGES SUGGESTION -->
-                <vx-card title="Suggested Pages" class="mt-base">
-                    <ul class="page-suggestions-list">
-                        <li class="page-suggestion flex items-center mb-4" v-for="page in suggestedPages" :key="page.index">
-                            <div class="mr-3"><vs-avatar class="m-0" :src="require(`@/assets/images/profile/pages/${page.img}`)" size="35px" /></div>
-                            <div class="leading-tight">
-                                <p class="font-medium">{{ page.title | capitalize }}</p>
-                                <span class="text-xs">{{ page.type | capitalize }}</span>
-                            </div>
-                            <div class="ml-auto">
-                                <div class="flex">
-                                    <feather-icon icon="StarIcon" svgClasses="h-4 w-4" class="mr-2 cursor-pointer"></feather-icon>
-                                </div>
-                                <!-- <span class="flex bg-primary rounded p-2 text-white"><feather-icon icon="UserPlusIcon" svgClasses="w-4 h-4"></feather-icon></span> -->
-                            </div>
-                        </li>
-                    </ul>
-                </vx-card>
-
-                <!-- TWITER FEEDS -->
-                <vx-card title="Twitter Feeds" class="mt-base">
-                    <ul class="twitter-feeds-list">
-                        <li class="twitter-feed" :class="{'mt-8': index}" v-for="(feed, index) in twitterFeeds" :key="feed.id">
-                            <!-- FEED HEADER -->
-                            <div class="twitter-feed-header flex items-center">
-                                <vs-avatar class="m-0" :src="require(`@/assets/images/portrait/small/${feed.authorAvatar}`)" size="35px" />
-                                <div class="leading-tight ml-3">
-                                    <p class="feed-author font-semibold">{{ feed.authorDisplayName }}</p>
-                                    <span class="flex items-center"><small>@{{ feed.authorUsername }}</small><feather-icon class="ml-1" icon="CheckIcon" svgClasses="h-3 w-3 bg-primary rounded-full text-white"></feather-icon></span>
-                                </div>
-                            </div>
-
-                            <!-- FEED CONTENT -->
-                            <p class="mt-4">{{ feed.content }}</p>
-                            <div class="tags-container" v-if="feed.tags.length">
-                                <span v-for="tag in feed.tags" :key="tag" id="tag" class="mr-2 text-primary">#{{tag}}</span>
-                            </div>
-                            <small class="mt-3 inline-block">{{ feed.time | date(true) }}</small>
-                        </li>
-                    </ul>
-                </vx-card>
-            </div>
+          <!-- COL 1 -->
+          <div class="vx-col w-full lg:w-1/3 mt-8">
+            <vs-card title="About" class="mt-base text-left">
+                <template slot="actions">
+                    <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+                </template>
+                <div class="user-bio text-xl font-bold m-5">
+                    <p>보유현황</p>
+                </div>
+                <hr>
+              <div class="text-lg text-yellow-500 m-8 float-right">0원</div>
+              <div class="text-lg text-gray-800 m-8">나의 크레딧</div>
+              <div class="mt-5">
+                  <vs-button class="ml-8 mb-4" type="border" color="#CE9FFC">충전하기</vs-button>
+              </div>
+            </vs-card>
+          </div>
 
             <!-- COL 2 -->
-            <div class="vx-col w-full lg:w-1/2">
-                <vx-card class="mt-base" v-for="(post, index) in userPosts" :key="index">
+            <div class="vx-col w-full lg:w-2/3 mt-8">
+                <vs-card class="mt-base" v-for="(post, index) in userPosts" :key="index">
                     <div>
                         <!-- POST HEADER -->
                         <div class="post-header flex justify-between mb-4">
@@ -175,121 +107,13 @@
                             </span>
                         </div>
 
-                        <!-- POST ACTION DATA -->
-                        <div>
-                            <div class="flex justify-between">
-                                <div class="flex items-center">
-                                    <div class="flex items-center"><feather-icon class="mr-2" icon="HeartIcon" svgClasses="h-5 w-5"></feather-icon> <span>{{ post.likes }}</span></div>
-                                    <ul class="users-liked user-list ml-3 sm:ml-6">
-                                        <li v-for="(user, userIndex) in post.usersLiked" :key="userIndex">
-                                            <vx-tooltip :text="user.name" position="bottom">
-                                                <vs-avatar :src="require(`@/assets/images/portrait/small/${user.img}`)" size="30px" class="border-2 border-white border-solid -m-1"></vs-avatar>
-                                            </vx-tooltip>
-                                        </li>
-                                    </ul>
-                                    <small class="ml-2">+{{ post.likes - 5 }} more</small>
-                                </div>
-                                <div class="flex items-center"><feather-icon class="mr-2" icon="MessageSquareIcon" svgClasses="h-5 w-5"></feather-icon> <span>{{ post.comments }}</span></div>
-                            </div>
-                            <div class="comments-container mt-4">
-                                <ul class="user-comments-list">
-                                    <li v-for="(commentedUser, commentIndex) in post.usersCommented.slice(0, 2)" :key="commentIndex" class="commented-user flex items-center mb-4">
-                                        <div class="mr-3"><vs-avatar class="m-0" :src="require(`@/assets/images/portrait/small/${commentedUser.img}`)" size="30px" /></div>
-                                        <div class="leading-tight">
-                                            <p class="font-medium">{{ commentedUser.author }}</p>
-                                            <span class="text-xs">{{ commentedUser.comment }}</span>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <div class="flex">
-                                                <feather-icon icon="HeartIcon" svgClasses="h-4 w-4" class="mr-2 cursor-pointer"></feather-icon>
-                                                <feather-icon icon="MessageSquareIcon" svgClasses="h-4 w-4" class="cursor-pointer"></feather-icon>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <span class="flex justify-end" v-if="post.usersCommented.length > 2">
-                                    <a class="inline-flex items-center text-sm" href=""><span>View All</span> <feather-icon icon="ChevronsRightIcon" svgClasses="h-4 w-4"></feather-icon></a>
-                                </span>
-                            </div>
-                            <div class="post-comment">
-                                <vs-textarea label="Add Comment" class="mb-2" v-model="post.commentbox" />
-                                <vs-button size="small">Post Comment</vs-button>
-                            </div>
-                        </div>
+
                     </div>
-                </vx-card>
+                </vs-card>
             </div>
 
-            <!-- COL 3 -->
-            <div class="vx-col w-full lg:w-1/4">
-
-                <!-- LATEST PHOTOS -->
-                <vx-card title="Latest Photos" class="mt-base">
-                    <div class="vx-row pt-2">
-                        <div class="vx-col w-1/2 sm:w-1/2 md:w-1/3 xl:1/4" v-for="(img, index) in userLatestPhotos" :key="index">
-                            <img :src="require(`@/assets/images/profile/user-uploads/${img}`)" alt="latest-upload" class="rounded mb-4 user-latest-image responsive">
-                        </div>
-                    </div>
-                </vx-card>
-
-                <vx-card title="Suggestions" class="mt-base">
-                    <!-- ACTION SLOT -->
-                    <template slot="actions">
-                        <feather-icon icon="MoreHorizontalIcon"></feather-icon>
-                    </template>
-
-                    <!-- FRIENDS LIST -->
-                    <ul class="friend-suggesions-list">
-                        <li class="friend-suggestion flex items-center mb-4" v-for="(friend, index) in suggestedFriends" :key="index">
-                            <div class="mr-3"><vs-avatar class="m-0" :src="require(`@/assets/images/portrait/small/${friend.avatar}`)" size="35px" /></div>
-                            <div class="leading-tight">
-                                <p class="font-medium">{{ friend.name }}</p>
-                                <span class="text-xs">{{ friend.mutualFriends }} Mutual Friends</span>
-                            </div>
-                            <div class="ml-auto cursor-pointer">
-                                <vs-button icon-pack="feather" icon="icon-user-plus" />
-                            </div>
-                        </li>
-                    </ul>
-                    <template slot="footer">
-                    <vs-button icon-pack="feather" icon="icon-plus" class="w-full">Load More</vs-button>
-                    </template>
-                </vx-card>
-
-                <vx-card title="Polls" class="mt-base">
-                    <ul class="polls-list">
-                        <li class="poll" v-for="poll in polls" :key="poll.id">
-                            <h6 class="poll-title">{{ poll.title }}</h6>
-                            <ul class="poll-options-result">
-                                <li class="poll-option mt-6" v-for="option in poll.options" :key="option.value">
-                                    <div class="flex">
-                                        <vs-radio v-model="userPoll" :vs-value="option.value">{{ option.text | capitalize }}</vs-radio>
-                                        <span class="block ml-auto">{{ option.voted }}%</span>
-                                    </div>
-                                    <vs-progress :percent="option.voted"></vs-progress>
-                                    <ul class="users-voted user-list mt-2">
-                                        <li v-for="(user, userIndex) in option.usersVoted" :key="userIndex">
-                                            <vx-tooltip :text="user.name" position="bottom">
-                                                <vs-avatar :src="require(`@/assets/images/portrait/small/${user.avatar}`)" size="30px" class="border-2 border-white border-solid -m-1"></vs-avatar>
-                                            </vx-tooltip>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <vs-button class="mt-5 w-full">Vote Now</vs-button>
-                        </li>
-                    </ul>
-                </vx-card>
-            </div>
         </div>
 
-        <div class="vx-row">
-            <div class="vx-col w-full">
-                <div class="flex justify-center mt-base">
-                    <vs-button id="button-load-more-posts" class="vs-con-loading__container" @click="loadContent">Load More</vs-button>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -337,48 +161,6 @@ export default {
         usersCommented: [
           { comment: 'orthoplumbate morningtide naphthaline exarteritis', author: 'Kitty Allanson', img: 'avatar-s-6.png', time: 'Mon Dec 10 2018 08:56:05 GMT+0000 (GMT)' },
           { comment: 'blockiness pandemy metaxylene speckle coppy', author: 'Jeanie Bulgrin', img: 'avatar-s-8.png', time: 'Mon Dec 10 2018 08:55:00 GMT+0000 (GMT)' },
-        ],
-      },
-      {
-        author: 'Leeanna Alvord',
-        time: 'Mon Dec 11 2018 08:05:05 GMT+0000 (GMT)',
-        isLiked: false,
-        text: 'Candy jelly beans powder brownie biscuit. Jelly marzipan oat cake cake. Cupcake I love wafer cake. Halvah I love powder jelly I love cheesecake cotton candy tiramisu brownie.',
-        media: [{ img: '25.jpg' }],
-        likes: 276,
-        comments: 105,
-        usersLiked: [
-          { name: 'Lai Lewandowski', img: 'avatar-s-6.png' },
-          { name: 'Elicia Rieske', img: 'avatar-s-7.png' },
-          { name: 'Darcey Nooner', img: 'avatar-s-8.png' },
-          { name: 'Julee Rossignol', img: 'avatar-s-10.png' },
-          { name: 'Jeffrey Gerondale', img: 'avatar-s-9.png' },
-        ],
-        commentbox: '',
-        usersCommented: [
-          { comment: 'I love cupcake danish jujubes sweet.', author: 'Darcey Nooner', img: 'avatar-s-8.png', time: 'Mon Dec 11 2018 09:56:05 GMT+0000 (GMT)' },
-          { comment: 'Wafer I love brownie jelly bonbon tart apple pie', author: 'Lai Lewandowski', img: 'avatar-s-6.png', time: 'Mon Dec 10 2018 09:50:00 GMT+0000 (GMT)' },
-        ],
-      },
-      {
-        author: 'Leeanna Alvord',
-        time: 'Mon Dec 10 2018 12:05:05 GMT+0000 (GMT)',
-        isLiked: false,
-        text: 'Wafer I love brownie jelly bonbon tart. Candy jelly beans powder brownie biscuit. Jelly marzipan oat cake cake.',
-        media: [{ sources: [{ type: 'video/mp4', src: 'http://vjs.zencdn.net/v/oceans.mp4' }], poster: 'https://goo.gl/xcCsDd' }],
-        likes: 269,
-        comments: 98,
-        usersLiked: [
-          { name: 'Vennie Mostowy', img: 'avatar-s-5.png' },
-          { name: 'Elicia Rieske', img: 'avatar-s-7.png' },
-          { name: 'Julee Rossignol', img: 'avatar-s-10.png' },
-          { name: 'Darcey Nooner', img: 'avatar-s-8.png' },
-          { name: 'Elicia Rieske', img: 'avatar-s-7.png' },
-        ],
-        commentbox: '',
-        usersCommented: [
-          { comment: 'I love cupcake danish jujubes sweet.', author: 'Darcey Nooner', img: 'avatar-s-8.png', time: 'Mon Dec 11 2018 09:56:05 GMT+0000 (GMT)' },
-          { comment: 'Wafer I love brownie jelly bonbon tart apple pie', author: 'Lai Lewandowski', img: 'avatar-s-6.png', time: 'Mon Dec 10 2018 09:50:00 GMT+0000 (GMT)' },
         ],
       },
       ],
