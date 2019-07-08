@@ -8,7 +8,7 @@
         title="토너먼트 기본 설정"
         :before-change="validate('step1')"
       >
-        <form @submit="(e) => e.preventDefault()" data-vv-scope="step1">
+        <form @submit="e => e.preventDefault()" data-vv-scope="step1">
           <div class="vx-row align-left">
             <div class="vx-col sm:w-1/2 w-full mb-2">
               <vs-input
@@ -59,7 +59,17 @@
         </form>
       </tab-content>
 
-      <tab-content title="토너먼트 항목 생성"> </tab-content>
+      <tab-content title="토너먼트 항목 생성">
+        <div class="vx-row align-left">
+          <div
+            class="vx-col lg:w-1/4 md:w-1/2 w-full"
+            v-for="i in selectCount"
+            :key="i"
+          >
+            <tournament-item />
+          </div>
+        </div>
+      </tab-content>
 
       <tab-content title="토너먼트 최종 확인"> </tab-content>
     </case-form-wizard>
@@ -68,6 +78,7 @@
 
 <script>
 import CaseFormWizard from '@/components/form/CaseFormWizard.vue';
+import TournamentItem from './tournamentItem.vue';
 
 export default {
   data() {
@@ -94,6 +105,9 @@ export default {
       return () => new Promise((resolve, reject) => {
         this.$validator.validateAll(step).then((result) => {
           if (result) {
+            // if (step === "step1") {
+            // this.$http.post("/api/")
+            // }
             resolve(true);
           } else {
             reject(new Error('correct all value'));
@@ -104,6 +118,7 @@ export default {
   },
   components: {
     CaseFormWizard,
+    TournamentItem,
   },
 };
 </script>

@@ -4,19 +4,25 @@
     errorColor="rgba(var(--vs-danger), 1)"
     :title="$props.title"
     :subtitle="$props.subtitle"
-    nextButtonText="다음"
-    backButtonText="이전"
-    finishButtonText="생성"
     @on-complete="$emit('onSubmit')"
   >
+    <template slot="step" slot-scope="props">
+      <wizard-step
+        :tab="props.tab"
+        :transition="props.transition"
+        :key="props.tab.title"
+        :index="props.index"
+      >
+      </wizard-step>
+    </template>
     <slot />
-    <template slot="footer" scope="props">
+    <template slot="footer" slot-scope="props">
       <div class="wizard-footer-right">
         <wizard-button
           @click.native="props.nextTab()"
           :style="props.fillButtonStyle"
         >
-          Next</wizard-button
+          생성</wizard-button
         >
       </div>
     </template>
