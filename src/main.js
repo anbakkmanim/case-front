@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import { Plugin } from 'vue-fragment';
 import VueFormWizard from 'vue-form-wizard';
+import Axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './store/store';
@@ -34,6 +35,11 @@ Vue.use(Plugin);
 
 // Vue Form Wizard 사용
 Vue.use(VueFormWizard);
+
+// Vue Axios 사용
+Vue.prototype.$http = Axios.create({
+  baseURL: 'http://10.80.161.110:8000',
+});
 
 Vue.config.productionTip = false;
 

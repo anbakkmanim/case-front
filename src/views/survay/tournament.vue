@@ -105,6 +105,9 @@ export default {
       return () => new Promise((resolve, reject) => {
         this.$validator.validateAll(step).then((result) => {
           if (result) {
+            // if (step === "step1") {
+            // this.$http.post("/api/")
+            // }
             resolve(true);
           } else {
             reject(new Error('correct all value'));

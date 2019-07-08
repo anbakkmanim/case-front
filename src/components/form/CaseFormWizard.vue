@@ -4,9 +4,6 @@
     errorColor="rgba(var(--vs-danger), 1)"
     :title="$props.title"
     :subtitle="$props.subtitle"
-    nextButtonText="다음"
-    backButtonText="이전"
-    finishButtonText="생성"
     @on-complete="$emit('onSubmit')"
   >
     <template slot="step" slot-scope="props">
@@ -25,7 +22,7 @@
           @click.native="props.nextTab()"
           :style="props.fillButtonStyle"
         >
-          다음</wizard-button
+          생성</wizard-button
         >
       </div>
     </template>
