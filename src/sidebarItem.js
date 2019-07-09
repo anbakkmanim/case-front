@@ -59,6 +59,10 @@ export default [
             url: '/survey/create/selection',
             name: '선택형 추가',
           },
+          {
+            url: '/survey/create/short',
+            name: '단답형 추가',
+          },
         ],
       },
       {

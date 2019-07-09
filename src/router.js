@@ -88,6 +88,19 @@ export default new Router({
           },
         },
         {
+          path: '/survey/create/short',
+          component: () => import('./views/survey/ShortAnswer.vue'),
+          meta: {
+            pageTitle: '단답형 퀴즈 추가',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '설문조사', url: '/survey' },
+              { title: '설문조사 추가', url: '/survey/create' },
+              { title: '단답형 퀴즈 추가', active: true },
+            ],
+          },
+        },
+        {
           path: '/survey/statistics/selectionStatistics',
           component: () => import('./views/statistics/selectionStatistics.vue'),
           meta: {
