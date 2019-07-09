@@ -61,6 +61,17 @@ export default [
           },
         ],
       },
+      {
+        url: null,
+        name: '통계 페이지',
+        icon: 'PlusSquareIcon',
+        submenu: [
+          {
+            url: '/survey/statistics/selectionStatistics',
+            name: '선택형 퀴즈 통계',
+          },
+        ],
+      },
     ],
   },
   {

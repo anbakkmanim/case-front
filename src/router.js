@@ -87,6 +87,18 @@ export default new Router({
             ],
           },
         },
+        {
+          path: '/survey/statistics/selectionStatistics',
+          component: () => import('./views/statistics/selectionStatistics.vue'),
+          meta: {
+            pageTitle: '선택형 퀴즈 통계',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '통계', url: '/statistics' },
+              { title: '선택형 퀴즈 통계', active: true },
+            ],
+          },
+        },
       ],
     },
     {
