@@ -47,6 +47,10 @@ export default [
         icon: 'PlusSquareIcon',
         submenu: [
           {
+            url: '/survey/create',
+            name: '일반형 추가',
+          },
+          {
             url: '/survey/create/tournament',
             name: '토너먼트형 추가',
           },
@@ -59,7 +63,7 @@ export default [
     ],
   },
   {
-    header: '헤더 테스트',
+    header: '풀페이지',
   },
   {
     url: null,
