@@ -50,7 +50,7 @@ export default new Router({
         },
         {
           path: '/survey/create/normal',
-          component: () => import('./views/survey/MakeSurvey.vue'),
+          component: () => import('./views/survey/MakeNormalSurvey.vue'),
           meta: {
             pageTitle: '일반 설문 추가',
             breadcrumb: [
