@@ -40,6 +40,7 @@ export default [
       {
         url: '/survey',
         name: '설문조사',
+        exact: false,
       },
       {
         url: null,
@@ -47,7 +48,7 @@ export default [
         icon: 'PlusSquareIcon',
         submenu: [
           {
-            url: '/survey/create',
+            url: '/survey/create/normal',
             name: '일반형 추가',
           },
           {
