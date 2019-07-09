@@ -15,7 +15,7 @@
                 </div>
                 <div class="clearfix text-left">
                   <vs-input
-                      v-validate="'required|alpha_dash|min:3'"
+                      v-validate="'required|min:3'"
                       data-vv-validate-on="blur"
                       label-placeholder="Username"
                       name="username"
@@ -32,8 +32,8 @@
                       name="account"
                       placeholder="account"
                       v-model="account"
-                      class="w-3/4 float-left" />
-                    <vs-button type="border" class="mt-5 mb-1 ml-4 md:w-auto">중복체크</vs-button>
+                      class="w-3/5 pr-2 float-left" />
+                    <vs-button type="border" class="mt-5 mb-1 w-2/5" @click="checkID">중복체크</vs-button>
                  </div>
                   <span class="text-danger text-sm">{{ errors.first('account') }}</span>
 
@@ -94,11 +94,12 @@ export default {
       password: '',
       confirm_password: '',
       isTermsConditionAccepted: true,
+      isCheck: false,
     };
   },
   computed: {
     validateForm() {
-      return !this.errors.any() && this.username !== '' && this.email !== '' && this.account !== '' && this.password !== '' && this.confirm_password !== '' && this.isTermsConditionAccepted === true;
+      return !this.errors.any() && this.isCheck === true && this.username !== '' && this.email !== '' && this.account !== '' && this.password !== '' && this.confirm_password !== '' && this.isTermsConditionAccepted === true;
     },
   },
   methods: {
@@ -123,6 +124,43 @@ export default {
         .catch((e) => {
           console.error(e);
         });
+    },
+    checkID() {
+      if (this.account === '') {
+        this.$vs.notify({
+          title: '아이디',
+          text: '아이디를 입력해주세요.',
+          color: 'danger',
+          iconPack: 'feather',
+          icon: 'icon-alert-circle',
+        });
+      } else {
+        this.$http.get(`/user/idCheck/${this.account}`)
+          .then(({ data }) => {
+            if (data.idx === 1) {
+              this.$vs.notify({
+                title: '아이디',
+                text: '다른 아이디를 입력해주세요.',
+                color: 'danger',
+                iconPack: 'feather',
+                icon: 'icon-alert-circle',
+              });
+              this.isCheck = false;
+              this.account = '';
+            }
+          })
+          .catch((e) => {
+            console.error(e);
+            this.$vs.notify({
+              title: '아이디',
+              text: '사용 가능한 아이디입니다.',
+              color: 'success',
+              iconPack: 'feather',
+              icon: 'icon-check',
+            });
+            this.isCheck = true;
+          });
+      }
     },
   },
 };
