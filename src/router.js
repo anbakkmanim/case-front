@@ -40,6 +40,13 @@ export default new Router({
         {
           path: '/survey',
           component: () => import('./views/survey/list/SurveyList.vue'),
+          meta: {
+            pageTitle: '설문조사 목록',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '설문조사 목록', active: true },
+            ],
+          },
         },
         {
           path: '/survey/create/tournament',
