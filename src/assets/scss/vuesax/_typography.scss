@@ -1,22 +1,21 @@
 /*=========================================================================================
-	File Name: _typography.scss
-	Description: partial- typography styles
-	----------------------------------------------------------------------------------------
-	Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-	Version: 1.1
-	Author: Pixinvent
-	Author URL: hhttp://www.themeforest.net/user/pixinvent
+    File Name: _typography.scss
+    Description: partial- typography styles
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuesax Admin - VueJS Dashboard Admin Template
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
 body {
-	color: $content-color;
+    color: $content-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: $headings-color;
+    color: $headings-color;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -35,9 +34,9 @@ h5, .h5 { font-size: $h5-font-size; }
 h6, .h6 { font-size: $h6-font-size; }
 
 h4 {
-	.vs-tooltip &{
-		color: #fff;
-	}
+    .vs-tooltip &{
+        color: $white;
+    }
 }
 
 
@@ -45,10 +44,10 @@ a:active,
 a:visited,
 a:hover,
 a {
-	color: rgba(var(--vs-primary), 1);
+    color: rgba(var(--vs-primary), 1);
 }
 
 // quill editor
 u {
-	text-decoration: underline;
+    text-decoration: underline;
 }

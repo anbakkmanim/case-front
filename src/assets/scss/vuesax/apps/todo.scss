@@ -3,9 +3,8 @@
     Description: Todo app's styles. This is imported in Todo.vue file
     ----------------------------------------------------------------------------------------
     Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-    Version: 1.1
-    Author: Pixinvent
-    Author URL: hhttp://www.themeforest.net/user/pixinvent
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
 
@@ -25,23 +24,14 @@
         width: 100%;
         height: calc(100% - 50px);
     }
-    
+
     // TRANSITION
     .todo_todo-item {
         transition: all .35s;
     }
-    
-    .list-enter-up-leave-active {
-      transition: none !important;
-    }
-    
-    .list-enter-up-enter {
-      opacity: 0;
-      transform: translateY(30px);
-    }
 
     .list-item-component {
-        transition: background-color .2s;
+        transition: background-color .2s, transform .2s;
         border-top: 1px solid #dae1e7;
         &:hover {
             // background-color: #eee;

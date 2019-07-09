@@ -3,9 +3,8 @@
   Description: Styles for vx-sidebar component. Imported in VxSidebar.vue file
   ----------------------------------------------------------------------------------------
   Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-  Version: 1.1
   Author: Pixinvent
-  Author URL: hhttp://www.themeforest.net/user/pixinvent
+  Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
 
@@ -13,6 +12,10 @@
 
 .main-menu-sidebar{
   white-space: nowrap;
+
+  .vs-sidebar--background {
+    z-index: 51000;
+  }
 
   .vs-sidebar{
     z-index: 51000;
@@ -23,7 +26,7 @@
     }
     &.vs-sidebar-reduce{
       max-width: $reduced-sidebar-width;
-    
+
       &:hover:not(.vs-sidebar-reduceNotRebound):not(.vs-sidebar-reduceNotHoverExpand){
         .vs-sidebar--items {
         }
@@ -36,7 +39,7 @@
       }
     }
   }
-  
+
   .header-sidebar {
     padding: 20px 19px 16px 23px;
     width: 100%;
@@ -106,9 +109,10 @@
   }
 
   .con-vs-chip {
+    min-height: 24px;
 		box-shadow: 0px 0px 7px 3px rgba(0,0,0,0.1);
   	.vs-chip--text {
-  		color: #fff;
+  		color: $white;
       font-size: .8rem;
   	}
   }
@@ -117,11 +121,14 @@
     transition: none;
     overflow: visible !important;
     &:hover{
-      a > *{
-        transform: translateX(5px);
+      a {
+        color: inherit;
+        > * {
+          transform: translateX(5px);
+        }
       }
     }
-  
+
     &.vs-sidebar-item-active {
 	  	border-right: none !important;
       font-weight: 400;
@@ -134,13 +141,13 @@
       transition: none;
       border-radius: 4px;
 	  	opacity: unset;
+      color: $content-color;
       > * {
         transition: transform 0.25s ease;
       }
       padding: 10px 15px;
       span{
         font-size: 15px;
-        color: #565656;
       }
     }
 
@@ -152,17 +159,17 @@
       }
     }
 
-    
-    
+
+
     .router-link-active{
       background: linear-gradient(118deg, rgba(var(--vs-primary),1), rgba(var(--vs-primary),.7));
       font-weight: 400;
       box-shadow: 0px 0px 10px 1px rgba(var(--vs-primary),.7);
       .feather-icon{
-        color: #FFF;
+        color: $white;
       }
       span{
-        color: #FFF;
+        color: $white;
       }
     }
   }

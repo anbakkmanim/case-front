@@ -105,6 +105,8 @@ export default {
     },
     validate(step) {
       return () => new Promise((resolve, reject) => {
+        this.$vs.loading();
+
         this.$validator.validateAll(step).then((result) => {
           if (result) {
             if (step === 'step1') {
@@ -115,15 +117,20 @@ export default {
               })
                 .then(({ data }) => {
                   this.qu_idx = data.idx;
+                  this.$vs.loading.close();
                   resolve(true);
                 })
                 .catch((e) => {
                   console.error(e);
+                  this.$vs.loading.close();
                   reject(new Error('퀴즈 추가 실패'));
                 });
+            } else {
+              this.$vs.loading.close();
             }
           } else {
             reject(new Error('correct all value'));
+            this.$vs.loading.close();
           }
         });
       });
