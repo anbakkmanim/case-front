@@ -7,18 +7,37 @@
             <div class="vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center">
               <img src="@/assets/images/pages/forgot-password.png" alt="login" class="mx-auto">
             </div>
-            <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center bg-white">
+            <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center bg-white text-left">
               <div class="p-8">
                 <div class="vx-card__title mb-8 text-left">
                   <h4 class="mb-4">Recover your password</h4>
                   <p>Please enter your email address and we'll send you instructions on how to reset your password.</p>
                 </div>
 
-                <vs-input type="email" label-placeholder="Email" v-model="value1" class="w-full mb-8 text-left" />
+                <vs-input
+                      v-validate="'required|alpha_dash'"
+                      data-vv-validate-on="blur"
+                      label-placeholder="Account"
+                      name="account"
+                      placeholder="account"
+                      v-model="account"
+                      class="w-full" />
+                  <span class="text-danger text-sm">{{ errors.first('account') }}</span>
 
-                <div class="flex flex-wrap justify-between flex-col-reverse sm:flex-row">
-                  <vs-button type="border" to="/pages/login" class="px-4 w-full md:w-auto">Back To Login</vs-button>
-                  <vs-button class="float-right px-4 w-full md:w-auto mt-3 mb-8 md:mt-0 md:mb-0">Recover Password</vs-button>
+                <vs-input
+                      v-validate="'required|email'"
+                      data-vv-validate-on="blur"
+                      name="email"
+                      type="email"
+                      label-placeholder="Email"
+                      placeholder="Email"
+                      v-model="email"
+                      class="w-full mt-8 text-left" />
+                  <span class="text-danger text-sm">{{ errors.first('email') }}</span>
+
+                <div class="flex flex-wrap justify-between flex-col-reverse sm:flex-row mt-8">
+                  <vs-button type="border" to="/login" class="px-4 w-full md:w-auto">Back To Login</vs-button>
+                  <vs-button class="float-right px-4 w-full md:w-auto mt-3 mb-8 md:mt-0 md:mb-0" :disabled="!validateForm">Recover Password</vs-button>
                 </div>
               </div>
             </div>
@@ -33,8 +52,14 @@
 export default {
   data() {
     return {
-      value1: '',
+      email: '',
+      account: '',
     };
+  },
+  computed: {
+    validateForm() {
+      return !this.errors.any() && this.account !== '' && this.email !== '';
+    },
   },
 };
 </script>
