@@ -55,7 +55,7 @@ export default new Router({
           },
         },
         {
-          path: '/survay/create/selection',
+          path: '/survey/create/selection',
           component: () => import('./views/survey/selection.vue'),
           meta: {
             pageTitle: '선택형 퀴즈 추가',
