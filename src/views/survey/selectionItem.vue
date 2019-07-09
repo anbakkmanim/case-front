@@ -10,10 +10,10 @@
                   v-validate="'required'"
                 />
           </vs-radio>
+        <span @click="handleDelete(i)">&times;</span>
       </li>
     </ul>
-
-    <vs-button class="ml-4" type="line" @click="addSelection">보기 추가</vs-button>
+    <vs-button color="primary" class="ml-4" type="line" @click="addSelection()" v-if="Count<5">보기 추가</vs-button>
   </div>
 </template>
 
@@ -23,7 +23,6 @@ export default {
   data() {
     return {
       title: '',
-      images: [],
       isSet: true,
       select: '',
       selection: [],
@@ -35,6 +34,10 @@ export default {
       if (this.Count < 5) {
         this.Count++;
       }
+    },
+    handleDelete(i) {
+      this.selection.splice(i, 1);
+      this.Count--;
     },
   },
   name: 'selection-item',
