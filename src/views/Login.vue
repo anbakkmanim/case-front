@@ -1,11 +1,18 @@
 <template>
-  <div class="h-screen flex w-full bg-img vx-row no-gutter items-center justify-center" id="page-login">
+  <div
+    class="h-screen flex w-full bg-img vx-row no-gutter items-center justify-center"
+    id="page-login"
+  >
     <div class="vx-col sm:w-1/2 md:w-1/2 lg:w-3/4 xl:w-3/5 sm:m-0 m-4">
       <case-card>
         <div slot="no-body" class="full-page-bg-color">
           <div class="vx-row no-gutter justify-center items-center">
             <div class="vx-col hidden lg:block lg:w-1/2">
-              <img src="@/assets/images/pages/login.png" alt="login" class="mx-auto">
+              <img
+                src="@/assets/images/pages/login.png"
+                alt="login"
+                class="mx-auto"
+              />
             </div>
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 bg-white text-left">
               <div class="p-8">
@@ -13,35 +20,58 @@
                   <h4 class="mb-4">Login</h4>
                   <p>Welcome back, please login to your account.</p>
                 </div>
-                 <!-- icon="icon icon-user"
+                <!-- icon="icon icon-user"
                     icon-pack="feather" -->
                 <vs-input
-                    v-validate="'required'"
-                    data-vv-validate-on="blur"
-                    name="account"
-                    label-placeholder="Account"
-                    v-model="account"
-                    class="w-full no-icon-border text-left"/>
-                <span class="text-danger text-sm">{{ errors.first('account') }}</span>
+                  v-validate="'required'"
+                  data-vv-validate-on="blur"
+                  name="account"
+                  label-placeholder="Account"
+                  v-model="account"
+                  class="w-full no-icon-border text-left"
+                />
+                <span class="text-danger text-sm">{{
+                  errors.first("account")
+                }}</span>
 
                 <vs-input
-                    data-vv-validate-on="blur"
-                    v-validate="'required'"
-                    type="password"
-                    name="password"
-                    label-placeholder="Password"
-                    v-model="password"
-                    class="w-full mt-6 no-icon-border text-left" />
-                <span class="text-danger text-sm">{{ errors.first('password') }}</span>
+                  data-vv-validate-on="blur"
+                  v-validate="'required'"
+                  type="password"
+                  name="password"
+                  label-placeholder="Password"
+                  v-model="password"
+                  class="w-full mt-6 no-icon-border text-left"
+                />
+                <span class="text-danger text-sm">{{
+                  errors.first("password")
+                }}</span>
 
                 <div class="flex flex-wrap justify-between my-5">
-                  <vs-checkbox v-model="checkbox_remember_me" class="mb-3">Remember Me</vs-checkbox>
-                  <router-link to="/forgetpassword">Forgot Password?</router-link>
+                  <vs-checkbox v-model="checkbox_remember_me" class="mb-3"
+                    >Remember Me</vs-checkbox
+                  >
+                  <router-link to="/forgetpassword"
+                    >Forgot Password?</router-link
+                  >
                 </div>
 
-                <div class="flex flex-wrap justify-between flex-col-reverse sm:flex-row">
-                  <vs-button type="border" to ="/register" class="float-left" @click="registerUser">Register</vs-button>
-                  <vs-button class="float-right" :disabled="!validateForm" @click="login">Login</vs-button>
+                <div
+                  class="flex flex-wrap justify-between flex-col-reverse sm:flex-row"
+                >
+                  <vs-button
+                    type="border"
+                    to="/register"
+                    class="float-left"
+                    @click="registerUser"
+                    >Register</vs-button
+                  >
+                  <vs-button
+                    class="float-right"
+                    :disabled="!validateForm"
+                    @click="login"
+                    >Login</vs-button
+                  >
                 </div>
               </div>
             </div>
@@ -73,8 +103,9 @@ export default {
         account: this.account,
         password: this.password,
       })
-        .then(() => {
-
+        .then(({ data }) => {
+          this.$store.dispatch('user/addUserInfo', data);
+          this.$router.push('/');
         })
         .catch((e) => {
           console.error(e);
@@ -111,19 +142,19 @@ export default {
 
 <style lang="scss">
 #page-login {
-    .social-login {
-        .bg-facebook {
-            background-color: #1551b1;
-        }
-        .bg-twitter {
-            background-color: #00aaff;
-        }
-        .bg-google {
-            background-color: #4285F4;
-        }
-        .bg-github {
-            background-color: #333;
-        }
+  .social-login {
+    .bg-facebook {
+      background-color: #1551b1;
     }
+    .bg-twitter {
+      background-color: #00aaff;
+    }
+    .bg-google {
+      background-color: #4285f4;
+    }
+    .bg-github {
+      background-color: #333;
+    }
+  }
 }
 </style>

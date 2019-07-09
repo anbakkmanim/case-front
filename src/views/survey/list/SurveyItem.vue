@@ -40,7 +40,7 @@
       <div class="vx-col w-full flex justify-between">
         <span class="flex items-center">
           <feather-icon icon="UsersIcon" svgClasses="h-5 w-5" />
-          <span class="ml-1">{{ participants }}명</span>
+          <span class="ml-1">{{ participants }}명 참가</span>
         </span>
         <span class="flex items-center">
           <vs-icon icon="money" color="warning" size="small" />

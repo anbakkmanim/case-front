@@ -11,6 +11,7 @@ import moduleCalendar from './calendar/moduleCalendar';
 import moduleChat from './chat/moduleChat';
 import moduleEmail from './email/moduleEmail';
 import moduleSurvey from './survey/moduleSurvey';
+import moduleUser from './user/moduleUser';
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     chat: moduleChat,
     email: moduleEmail,
     survey: moduleSurvey,
+    user: moduleUser,
   },
   strict: process.env.NODE_ENV !== 'production',
 });

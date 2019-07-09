@@ -36,9 +36,10 @@ Vue.use(Plugin);
 // Vue Form Wizard 사용
 Vue.use(VueFormWizard);
 
+if (process.env.NODE_ENV !== 'production') { window.baseURL = 'http://10.80.161.110:8000'; } else { window.baseURL = ''; }
 // Vue Axios 사용
 Vue.prototype.$http = Axios.create({
-  baseURL: 'http://10.80.161.110:8000/api',
+  baseURL: `${window.baseURL}/api`,
 });
 
 Vue.config.productionTip = false;

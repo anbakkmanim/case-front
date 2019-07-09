@@ -82,54 +82,13 @@
               <ul style="min-width: 9rem">
                 <li
                   class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-                  @click="$router.push('/pages/profile')"
-                >
-                  <feather-icon
-                    icon="UserIcon"
-                    svgClasses="w-4 h-4"
-                  ></feather-icon>
-                  <span class="ml-2">Profile</span>
-                </li>
-                <li
-                  class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-                  @click="$router.push('/apps/email')"
-                >
-                  <feather-icon
-                    icon="MailIcon"
-                    svgClasses="w-4 h-4"
-                  ></feather-icon>
-                  <span class="ml-2">Inbox</span>
-                </li>
-                <li
-                  class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-                  @click="$router.push('/apps/todo')"
-                >
-                  <feather-icon
-                    icon="CheckSquareIcon"
-                    svgClasses="w-4 h-4"
-                  ></feather-icon>
-                  <span class="ml-2">Tasks</span>
-                </li>
-                <li
-                  class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-                  @click="$router.push('/apps/chat')"
-                >
-                  <feather-icon
-                    icon="MessageSquareIcon"
-                    svgClasses="w-4 h-4"
-                  ></feather-icon>
-                  <span class="ml-2">Chat</span>
-                </li>
-                <vs-divider class="m-1"></vs-divider>
-                <li
-                  class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-                  @click="$router.push('/pages/login')"
+                  @click="$router.push('/logout')"
                 >
                   <feather-icon
                     icon="LogOutIcon"
                     svgClasses="w-4 h-4"
                   ></feather-icon>
-                  <span class="ml-2">Logout</span>
+                  <span class="ml-2">로그아웃</span>
                 </li>
               </ul>
             </vs-dropdown-menu>
@@ -152,34 +111,13 @@ export default {
   },
   data() {
     return {
-      navbarSearchAndPinList: {},
-      searchQuery: '',
-      showFullSearch: false,
-      unreadNotifications: [
-        { index: 0, title: 'New Message', msg: 'Are your going to meet me tonight?', icon: 'MessageSquareIcon', time: 'Wed Jan 30 2019 07:45:23 GMT+0000 (GMT)', category: 'primary' },
-        { index: 1, title: 'New Order Recieved', msg: 'You got new order of goods.', icon: 'PackageIcon', time: 'Wed Jan 30 2019 07:45:23 GMT+0000 (GMT)', category: 'success' },
-        { index: 2, title: 'Server Limit Reached!', msg: 'Server have 99% CPU usage.', icon: 'AlertOctagonIcon', time: 'Thu Jan 31 2019 07:45:23 GMT+0000 (GMT)', category: 'danger' },
-        { index: 3, title: 'New Mail From Peter', msg: 'Cake sesame snaps cupcake', icon: 'MailIcon', time: 'Fri Feb 01 2019 07:45:23 GMT+0000 (GMT)', category: 'primary' },
-        { index: 4, title: 'Bruce\'s Party', msg: 'Chocolate cake oat cake tiramisu marzipan', icon: 'CalendarIcon', time: 'Fri Feb 02 2019 07:45:23 GMT+0000 (GMT)', category: 'warning' },
-      ],
       settings: { // perfectscrollbar settings
         maxScrollbarLength: 60,
         wheelSpeed: 0.60,
       },
-      autoFocusSearch: false,
-      showBookmarkPagesDropdown: false,
     };
   },
-  watch: {
-    // eslint-disable-next-line object-shorthand
-    '$route'() {
-      if (this.showBookmarkPagesDropdown) this.showBookmarkPagesDropdown = false;
-    },
-  },
   computed: {
-    data() {
-      return this.$store.state.navbarSearchAndPinList;
-    },
     activeUserInfo() {
       return this.$store.state.AppActiveUser;
     },
@@ -194,92 +132,13 @@ export default {
       if (this.sidebarWidth === 'reduced') return 'navbar-reduced';
       return 'navbar-full';
     },
-    starredPages() {
-      return this.$store.getters.starredPages;
-    },
-    starredPagesLimited() { return this.starredPages.slice(0, 10); },
-    starredPagesMore() { return this.starredPages.slice(10); },
   },
   methods: {
-    updateLocale(locale) {
-      this.$i18n.locale = locale;
-    },
     showSidebar() {
       this.$store.commit('TOGGLE_IS_SIDEBAR_ACTIVE', true);
     },
-    selected(item) {
-      this.$router.push(item.url);
-      this.showFullSearch = false;
-    },
-    actionClicked(item) {
-      // e.stopPropogation();
-      this.$store.dispatch('updateStarredPage', { index: item.index, val: !item.highlightAction });
-    },
-    showNavbarSearch() {
-      this.showFullSearch = true;
-    },
-    showSearchbar() {
-      this.showFullSearch = true;
-    },
-    elapsedTime(startTime) {
-      const x = new Date(startTime);
-      const now = new Date();
-      let timeDiff = now - x;
-      timeDiff /= 1000;
-
-      const seconds = Math.round(timeDiff);
-      timeDiff = Math.floor(timeDiff / 60);
-
-      const minutes = Math.round(timeDiff % 60);
-      timeDiff = Math.floor(timeDiff / 60);
-
-      const hours = Math.round(timeDiff % 24);
-      timeDiff = Math.floor(timeDiff / 24);
-
-      const days = Math.round(timeDiff % 365);
-      timeDiff = Math.floor(timeDiff / 365);
-
-      const years = timeDiff;
-
-      if (years > 0) {
-        return `${years} ${years > 1 ? 'Years' : 'Year'} ago`;
-      }
-      if (days > 0) {
-        return `${days} ${days > 1 ? 'Days' : 'day'} ago`;
-      }
-      if (hours > 0) {
-        return `${hours} ${hours > 1 ? 'Hours' : 'Hour'} ago`;
-      }
-      if (minutes > 0) {
-        return `${minutes} ${minutes > 1 ? 'Mins' : 'Min'} ago`;
-      }
-      if (seconds > 0) {
-        return `${seconds} ${seconds > 1 ? 'Seconds' : 'Second'} ago`;
-      }
-
-      return 'Just Now';
-    },
     outside() {
       this.showBookmarkPagesDropdown = false;
-    },
-  },
-  directives: {
-    'click-outside': {
-      bind(el, binding) {
-        const { bubble } = binding.modifiers;
-        const handler = (e) => {
-          if (bubble || (!el.contains(e.target) && el !== e.target)) {
-            binding.value(e);
-          }
-        };
-        el.__vueClickOutside__ = handler;
-        document.addEventListener('click', handler);
-      },
-
-      unbind(el) {
-        document.removeEventListener('click', el.__vueClickOutside__);
-        el.__vueClickOutside__ = null;
-      },
     },
   },
 };

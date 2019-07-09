@@ -36,7 +36,7 @@
           size="large"
           icon-pack="feather"
           icon="icon-search"
-          placeholder="Search..."
+          placeholder="검색.."
           v-model="searchQuery"
           class="vs-input-no-border vs-input-no-shdow-focus no-icon-border w-full"
         />
