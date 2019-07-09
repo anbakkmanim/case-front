@@ -105,10 +105,20 @@ export default {
     registerUser() {
       if (!this.validateForm) return false;
       this.$http.post('/user/register', {
-
+        account: this.account,
+        password: this.password,
+        name: this.username,
+        email: this.email,
       })
         .then(() => {
-
+          this.$vs.notify({
+            title: '회원가입',
+            text: '회원가입이 완료되었습니다.',
+            color: 'success',
+            iconPack: 'feather',
+            icon: 'icon-check',
+          });
+          this.$router.push('/login');
         })
         .catch((e) => {
           console.error(e);
