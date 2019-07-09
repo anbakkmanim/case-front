@@ -38,16 +38,20 @@ export default [
         name: '프로필',
       },
       {
+        url: '/survey',
+        name: '설문조사',
+      },
+      {
         url: null,
-        name: '설문조사 추가',
+        name: '설문조사 추가 (test)',
         icon: 'PlusSquareIcon',
         submenu: [
           {
-            url: '/survay/create/tournament',
+            url: '/survey/create/tournament',
             name: '토너먼트형 추가',
           },
           {
-            url: '/survay/create/selection',
+            url: '/survey/create/selection',
             name: '선택형 추가',
           },
         ],

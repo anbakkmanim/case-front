@@ -3,11 +3,12 @@
     Description: Styles for quill editor externsion.
     ----------------------------------------------------------------------------------------
     Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-    Version: 1.1
-    Author: Pixinvent
-    Author URL: hhttp://www.themeforest.net/user/pixinvent
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
+
+@import "../_variables.scss";
 
 .quill-editor{
     .ql-bubble{
@@ -15,4 +16,15 @@
             z-index: 51000;
         }
     }
+}
+
+.theme-dark {
+  .quill-editor{
+    .ql-snow {
+      &.ql-toolbar,
+      &.ql-container {
+        border-color: $theme-dark-border-color;
+      }
+    }
+  }
 }

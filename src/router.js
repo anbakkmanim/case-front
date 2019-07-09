@@ -38,27 +38,31 @@ export default new Router({
           component: () => import('./views/Profile.vue'),
         },
         {
-          path: '/survay/create/tournament',
-          component: () => import('./views/survay/tournament.vue'),
+          path: '/survey',
+          component: () => import('./views/survey/list/SurveyList.vue'),
+        },
+        {
+          path: '/survey/create/tournament',
+          component: () => import('./views/survey/tournament.vue'),
           meta: {
             pageTitle: '토너먼트 퀴즈 추가',
             breadcrumb: [
               { title: '홈', url: '/' },
-              { title: '설문조사', url: '/suvray' },
-              { title: '설문조사 추가', url: '/suvray/create' },
+              { title: '설문조사', url: '/survey' },
+              { title: '설문조사 추가', url: '/survey/create' },
               { title: '토너먼트 퀴즈 추가', active: true },
             ],
           },
         },
         {
           path: '/survay/create/selection',
-          component: () => import('./views/survay/selection.vue'),
+          component: () => import('./views/survey/selection.vue'),
           meta: {
             pageTitle: '선택형 퀴즈 추가',
             breadcrumb: [
               { title: '홈', url: '/' },
-              { title: '설문조사', url: '/survay' },
-              { title: '설문조사 추가', url: '/survay/create' },
+              { title: '설문조사', url: '/survey' },
+              { title: '설문조사 추가', url: '/survey/create' },
               { title: '선택형 퀴즈 추가', active: true },
             ],
           },

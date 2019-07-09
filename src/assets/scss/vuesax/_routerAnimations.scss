@@ -1,11 +1,10 @@
 /*=========================================================================================
-	File Name: _routerAnimations.scss
-	Description: partial- router animations
-	----------------------------------------------------------------------------------------
-	Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-	Version: 1.1
-	Author: Pixinvent
-	Author URL: hhttp://www.themeforest.net/user/pixinvent
+    File Name: _routerAnimations.scss
+    Description: partial- router animations
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuesax Admin - VueJS Dashboard Admin Template
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
 
@@ -15,13 +14,13 @@
   transition: transform .35s, opacity .28s ease-in-out;
 }
 .zoom-fade-enter {
-	transform: scale(0.97);
+    transform: scale(0.97);
   opacity: 0;
 }
 
 .zoom-fade-leave-to {
-	transform: scale(1.03);
-	opacity: 0;
+    transform: scale(1.03);
+    opacity: 0;
 }
 
 /* FADE TRNASITION */
@@ -32,7 +31,7 @@
 
 .fade-enter,
 .fade-leave-to {
-	opacity: 0;
+    opacity: 0;
 }
 
 /* PAGE SLIDE */
@@ -45,8 +44,8 @@
 }
 
 .slide-fade-leave-to{
-	opacity: 0;
-	transform: translateX(30%);
+    opacity: 0;
+    transform: translateX(30%);
 }
 
 /* ZOOM OUT */
@@ -68,6 +67,6 @@
 }
 
 .fade-bottom-leave-to{
-	opacity: 0;
-	transform: translateY(8%);
+    opacity: 0;
+    transform: translateY(8%);
 }

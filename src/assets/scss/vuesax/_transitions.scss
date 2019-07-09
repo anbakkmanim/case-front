@@ -1,11 +1,10 @@
 /*=========================================================================================
-	File Name: _transitions.scss
-	Description: Transition styles
-	----------------------------------------------------------------------------------------
-	Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-	Version: 1.1
-	Author: Pixinvent
-	Author URL: hhttp://www.themeforest.net/user/pixinvent
+    File Name: _transitions.scss
+    Description: Transition styles
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuesax Admin - VueJS Dashboard Admin Template
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
 
@@ -13,11 +12,24 @@
 // transition-group : list;
 ///////////////////////////////////////////////////////////
 .list-leave-active {
-	position: absolute;
+    position: absolute;
 }
 
 .list-enter,
 .list-leave-to{
-	opacity: 0;
-	transform: translateX(30px);
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+
+///////////////////////////////////////////////////////////
+// transition-group : list-enter-up;
+///////////////////////////////////////////////////////////
+.list-enter-up-leave-active {
+  transition: none !important;
+}
+
+.list-enter-up-enter {
+  opacity: 0;
+  transform: translateY(30px);
 }
