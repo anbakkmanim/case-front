@@ -28,7 +28,14 @@
     <vs-divider></vs-divider>
 
     <div class="px-6 py-4">
+      <vs-checkbox
+        class="float-right"
+        @change="e => $store.dispatch('survey/updateAllTag', e.target.checked)"
+        :checked="isAllChecked"
+        >전체 선택</vs-checkbox
+      >
       <h5>태그</h5>
+
       <div class="todo__lables-list">
         <div
           class="todo__label flex items-center mt-6 cursor-pointer"
@@ -36,7 +43,7 @@
           :key="index"
         >
           <vs-checkbox
-            @change="e => updateCheckState(e, index)"
+            @change.stop="e => updateCheckState(e, index)"
             :checked="tag.sorted"
           >
             <span class="text-lg">{{ tag.i_interest }}</span>
@@ -83,6 +90,9 @@ export default {
     },
     orderBy() {
       return this.$store.getters['survey/surveyOrderBy'];
+    },
+    isAllChecked() {
+      return this.$store.getters['survey/tags'].every(e => e.sorted === true);
     },
   },
 };

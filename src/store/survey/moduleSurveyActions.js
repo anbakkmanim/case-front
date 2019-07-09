@@ -14,4 +14,8 @@ export default {
   setSurveySearchQuery({ commit }, query) {
     commit('SET_SURVEY_SEARCH_QUERY', query);
   },
+
+  updateAllTag({ commit }, payload) {
+    commit('TAG_ALL_UPDATE', payload);
+  },
 };

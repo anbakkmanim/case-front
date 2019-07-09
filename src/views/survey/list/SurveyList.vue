@@ -111,7 +111,7 @@ export default {
         return this.$store.state.survey.surveySearchQuery;
       },
       set(val) {
-        this.$store.dispatch('todo/setSurveySearchQuery', val);
+        this.$store.dispatch('survey/setSurveySearchQuery', val);
       },
     },
   },
