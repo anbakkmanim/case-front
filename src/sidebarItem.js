@@ -63,6 +63,10 @@ export default [
             url: '/survey/create/short',
             name: '단답형 추가',
           },
+          {
+            url: '/survey/create/long',
+            name: '장문형 추가',
+          },
         ],
       },
       {
