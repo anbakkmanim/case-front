@@ -44,6 +44,7 @@
 
       <!-- TODO LIST -->
       <VuePerfectScrollbar
+        id="surveyList"
         class="todo-content-scroll-area"
         :settings="settings"
         ref="todoListPS"
@@ -144,9 +145,16 @@ export default {
       window.addEventListener('resize', this.handleWindowResize);
     });
     this.setSidebarWidth();
+  },
+  mounted() {
+    this.$vs.loading({
+      container: '#surveyList',
+      scale: 2,
+    });
     this.$http.get('/case')
       .then(({ data }) => {
         this.$store.dispatch('survey/setSurvey', data);
+        this.$vs.loading.close('#surveyList>.con-vs-loading');
       })
       .catch((err) => {
         console.log(err);

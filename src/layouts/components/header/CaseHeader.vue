@@ -63,16 +63,24 @@
         <!-- USER META -->
         <div class="the-navbar__user-meta flex items-center sm:ml-5 ml-2">
           <div class="text-right leading-tight hidden sm:block">
-            <p class="font-semibold">John Doe</p>
-            <small>Available</small>
+            <template v-if="isLogined">
+              <p class="font-semibold text-left">
+                {{ $store.getters["user/name"] }}
+              </p>
+              <small>{{ $store.getters["user/email"] }}</small>
+            </template>
+            <router-link to="/login" class="font-semibold" v-else>
+              로그인 해주세요.
+            </router-link>
           </div>
-          <vs-dropdown vs-custom-content vs-trigger-click>
+          <vs-dropdown v-if="isLogined" vs-custom-content vs-trigger-click>
             <div class="con-img ml-3">
               <img
                 :src="
-                  require(`@/assets/images/portrait/small/${activeUserInfo.img}`)
+                  $store.getters['survey/profile'] ||
+                    require('@/assets/images/profile/default.png')
                 "
-                alt=""
+                alt="profile image"
                 width="40"
                 height="40"
                 class="rounded-full shadow-md cursor-pointer block"
@@ -80,6 +88,16 @@
             </div>
             <vs-dropdown-menu>
               <ul style="min-width: 9rem">
+                <li
+                  class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                  @click="$router.push('/profile')"
+                >
+                  <feather-icon
+                    icon="UserIcon"
+                    svgClasses="w-4 h-4"
+                  ></feather-icon>
+                  <span class="ml-2">프로필</span>
+                </li>
                 <li
                   class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
                   @click="$router.push('/logout')"
@@ -131,6 +149,9 @@ export default {
       if (this.sidebarWidth === 'default') return 'navbar-default';
       if (this.sidebarWidth === 'reduced') return 'navbar-reduced';
       return 'navbar-full';
+    },
+    isLogined() {
+      return this.$store.state.user.isLogined;
     },
   },
   methods: {
