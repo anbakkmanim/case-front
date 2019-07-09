@@ -1,25 +1,19 @@
-<!-- =========================================================================================
-    File Name: Profile.vue
-    Description: Profile Page
-    ----------------------------------------------------------------------------------------
-    Item Name: Vuesax Admin - VueJS Dashboard Admin Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
-
 <template>
     <div id="profile-page">
 
         <!-- PROFILE HEADER -->
         <div class="profile-header">
             <div class="relative">
+                <div class="block w-full bottom-0 bg-black absolute h-32">
+                    <div class="text-lg text-white mt-8 text-center">이름</div>
+                    <div class="text-lg text-white text-center">아이디</div>
+                </div>
                 <div class="cover-container rounded-t-lg">
                     <img :src="require(`@/assets/images/profile/user-uploads/${userCoverImg}`)" alt="user-profile-cover" class="responsive block">
                 </div>
                 <div class="profile-img-container pointer-events-none">
                     <div>
-                        <vs-avatar class="user-profile-img" :src="require(`@/assets/images/profile/user-uploads/${userInfo.profileImg}`)" size="85px" />
+                        <vs-avatar class="user-profile-img" :src="require(`@/assets/images/profile/user-uploads/${userInfo.profileImg}`)" size="200px" />
                     </div>
                 </div>
             </div>
@@ -29,30 +23,23 @@
                     <feather-icon @click="isNavOpen = !isNavOpen" icon="AlignJustifyIcon" v-show="!isNavOpen" class="vx-navbar-toggler" />
                     <feather-icon icon="XIcon" v-show="isNavOpen" @click="isNavOpen = !isNavOpen" class="vx-navbar-toggler" />
                 </div>
-                <div :class="isNavOpen ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
+                <div :class="isNavOpen ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto ">
                     <div class="text-sm sm:flex-grow">
-                        <ul class="sm:flex justify-around mt-8 w-full md:mt-0 md:ml-auto md:w-3/4">
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Timeline</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">About</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Photos</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Friends</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Videos</router-link></li>
-                            <li class="p-2 sm:p-0"><router-link to="/pages/profile">Events</router-link></li>
+                        <ul class="sm:flex justify-around mt-8 w-full md:mt-0 md:ml-auto ">
+                            <li class="p-2 sm:p-0 text-lg text-primary">크레딧관리</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- <vx-navbar> -->
-            <!-- </vx-navbar> -->
         </div>
 
         <!-- COL AREA -->
         <div class="vx-row">
           <!-- COL 1 -->
-          <div class="vx-col w-full lg:w-1/3 mt-8">
+          <div class="vx-col w-full lg:w-1/3 mt-2">
             <case-card title="보유현황" class="mt-base p-4 text-left">
               <hr>
-              <div class="text-lg text-yellow-500 m-8 float-right">0원</div>
+              <div class="text-lg text-warning m-8 float-right">0원</div>
               <div class="text-lg text-gray-800 m-8">나의 크레딧</div>
               <div class="mt-5">
                   <vs-button class="ml-8 mb-4" type="border" color="#CE9FFC">충전하기</vs-button>
@@ -61,13 +48,13 @@
           </div>
 
             <!-- COL 2 -->
-            <div class="vx-col w-full lg:w-2/3 mt-8">
+            <div class="vx-col w-full lg:w-2/3 mt-2">
                 <case-card class="mt-base p-4 text-left" v-for="(post, index) in userPosts" :key="index" title="사용내역">
                   <hr>
                     <div>
                       <div class="">
                         <div class="text-base text-gray-600 m-8 float-left">25일 토</div>
-                        <div class="text-xl text-yellow-500 mt-8 mr-8 float-right">+ 1,000 p</div>
+                        <div class="text-xl text-warning mt-8 mr-8 float-right">+ 1,000 p</div>
                         <div class="vx-col m-8">
                           <div class="text-lg text-gray-800">abc</div>
                           <div class="text-xl font-bold mt-5">대소고 설문조사 응시</div>
