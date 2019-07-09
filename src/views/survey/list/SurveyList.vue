@@ -45,7 +45,7 @@
       <!-- TODO LIST -->
       <VuePerfectScrollbar
         id="surveyList"
-        class="todo-content-scroll-area"
+        class="todo-content-scroll-area vs-con-loading__container"
         :settings="settings"
         ref="todoListPS"
       >
@@ -148,13 +148,13 @@ export default {
   },
   mounted() {
     this.$vs.loading({
-      container: '#surveyList',
+      container: this.$refs.todoListPS.$el,
       scale: 2,
     });
     this.$http.get('/case')
       .then(({ data }) => {
         this.$store.dispatch('survey/setSurvey', data);
-        this.$vs.loading.close('#surveyList>.con-vs-loading');
+        this.$vs.loading.close(this.$refs.todoListPS.$el);
       })
       .catch((err) => {
         console.log(err);
