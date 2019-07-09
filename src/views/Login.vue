@@ -7,30 +7,28 @@
             <div class="vx-col hidden lg:block lg:w-1/2">
               <img src="@/assets/images/pages/login.png" alt="login" class="mx-auto">
             </div>
-            <div class="vx-col sm:w-full md:w-full lg:w-1/2 bg-white">
+            <div class="vx-col sm:w-full md:w-full lg:w-1/2 bg-white text-left">
               <div class="p-8">
                 <div class="vx-card__title mb-8 text-left">
                   <h4 class="mb-4">Login</h4>
                   <p>Welcome back, please login to your account.</p>
                 </div>
+                 <!-- icon="icon icon-user"
+                    icon-pack="feather" -->
                 <vs-input
-                    v-validate="'required|email|min:3'"
+                    v-validate="'required'"
                     data-vv-validate-on="blur"
-                    name="email"
-                    icon="icon icon-user"
-                    icon-pack="feather"
-                    label-placeholder="Email"
-                    v-model="email"
+                    name="account"
+                    label-placeholder="Account"
+                    v-model="account"
                     class="w-full no-icon-border text-left"/>
-                <span class="text-danger text-sm">{{ errors.first('email') }}</span>
+                <span class="text-danger text-sm">{{ errors.first('account') }}</span>
 
                 <vs-input
                     data-vv-validate-on="blur"
-                    v-validate="'required|min:6|max:10'"
+                    v-validate="'required'"
                     type="password"
                     name="password"
-                    icon="icon icon-lock"
-                    icon-pack="feather"
                     label-placeholder="Password"
                     v-model="password"
                     class="w-full mt-6 no-icon-border text-left" />
@@ -38,11 +36,11 @@
 
                 <div class="flex flex-wrap justify-between my-5">
                   <vs-checkbox v-model="checkbox_remember_me" class="mb-3">Remember Me</vs-checkbox>
-                  <router-link to="/pages/forgot-password">Forgot Password?</router-link>
+                  <router-link to="/forgetpassword">Forgot Password?</router-link>
                 </div>
 
                 <div class="flex flex-wrap justify-between flex-col-reverse sm:flex-row">
-                  <vs-button type="border" class="float-left" @click="registerUser">Register</vs-button>
+                  <vs-button type="border" to ="/register" class="float-left" @click="registerUser">Register</vs-button>
                   <vs-button class="float-right" :disabled="!validateForm" @click="login">Login</vs-button>
                 </div>
               </div>
@@ -59,27 +57,28 @@
 export default {
   data() {
     return {
-      email: 'demo@demo.com',
-      password: 'demodemo',
+      account: '',
+      password: '',
       checkbox_remember_me: false,
     };
   },
   computed: {
     validateForm() {
-      return !this.errors.any() && this.email !== '' && this.password !== '';
+      return !this.errors.any() && this.account !== '' && this.password !== '';
     },
   },
   methods: {
     login() {
-      const payload = {
-        checkbox_remember_me: this.checkbox_remember_me,
-        userDetails: {
-          email: this.email,
-          password: this.password,
-        },
-        notify: this.$vs.notify,
-      };
-      this.$store.dispatch('auth/loginAttempt', payload);
+      this.$http.post('/user/login', {
+        account: this.account,
+        password: this.password,
+      })
+        .then(() => {
+
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     },
 
     loginAuth0() {
@@ -88,26 +87,6 @@ export default {
         return false;
       }
       this.$auth.login({ target: this.$route.query.to });
-    },
-
-    // Google login
-    loginWithGoogle() {
-      this.$store.dispatch('auth/loginWithGoogle', { notify: this.$vs.notify });
-    },
-
-    // Facebook login
-    loginWithFacebook() {
-      this.$store.dispatch('auth/loginWithFacebook', { notify: this.$vs.notify });
-    },
-
-    // Twitter login
-    loginWithTwitter() {
-      this.$store.dispatch('auth/loginWithTwitter', { notify: this.$vs.notify });
-    },
-
-    // Github login
-    loginWithGithub() {
-      this.$store.dispatch('auth/loginWithGithub', { notify: this.$vs.notify });
     },
 
     notifyAlreadyLogedIn() {
@@ -120,11 +99,11 @@ export default {
       });
     },
     registerUser() {
-      if (this.$store.state.auth.isUserLoggedIn()) {
-        this.notifyAlreadyLogedIn();
-        return false;
-      }
-      this.$router.push('/pages/register');
+      // if (this.$store.state.auth.isUserLoggedIn()) {
+      //   this.notifyAlreadyLogedIn();
+      //   return false;
+      // }
+      this.$router.push('/register');
     },
   },
 };

@@ -22,16 +22,19 @@
                       placeholder="Username"
                       v-model="username"
                       class="w-full" />
-                  <span class="text-danger text-sm">{{ errors.first('username') }}</span>
+                  <span class="text-danger text-sm w-full">{{ errors.first('username') }}</span>
 
-                  <vs-input
+                 <div class="w-full">
+                    <vs-input
                       v-validate="'required|alpha_dash'"
                       data-vv-validate-on="blur"
                       label-placeholder="Account"
                       name="account"
                       placeholder="account"
                       v-model="account"
-                      class="w-full" />
+                      class="w-3/4 float-left" />
+                    <vs-button type="border" class="mt-5 mb-1 ml-4 md:w-auto">중복체크</vs-button>
+                 </div>
                   <span class="text-danger text-sm">{{ errors.first('account') }}</span>
 
                   <vs-input
@@ -69,7 +72,7 @@
                   <span class="text-danger text-sm">{{ errors.first('confirm_password') }}</span>
 
                   <vs-checkbox v-model="isTermsConditionAccepted" class="mt-6">I accept the terms & conditions.</vs-checkbox>
-                  <vs-button  type="border" to="/pages/login" class="mt-6">Login</vs-button>
+                  <vs-button  type="border" to="/login" class="mt-6">Login</vs-button>
                   <vs-button class="float-right mt-6" @click="registerUser" :disabled="!validateForm">Register</vs-button>
                 </div>
               </div>
@@ -95,34 +98,21 @@ export default {
   },
   computed: {
     validateForm() {
-      return !this.errors.any() && this.username !== '' && this.email !== '' && this.password !== '' && this.confirm_password !== '' && this.isTermsConditionAccepted === true;
+      return !this.errors.any() && this.username !== '' && this.email !== '' && this.account !== '' && this.password !== '' && this.confirm_password !== '' && this.isTermsConditionAccepted === true;
     },
   },
   methods: {
     registerUser() {
       if (!this.validateForm) return false;
-      if (this.$store.state.auth.isUserLoggedIn()) {
-        this.notifyAlreadyLogedIn();
-        return;
-      }
-      const payload = {
-        userDetails: {
-          email: this.email,
-          password: this.password,
-          username: this.username,
-        },
-        notify: this.$vs.notify,
-      };
-      this.$store.dispatch('auth/registerUser', payload);
-    },
-    notifyAlreadyLogedIn() {
-      this.$vs.notify({
-        title: 'Login Attempt',
-        text: 'You are already logged in!',
-        iconPack: 'feather',
-        icon: 'icon-alert-circle',
-        color: 'warning',
-      });
+      this.$http.post('/user/register', {
+
+      })
+        .then(() => {
+
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     },
   },
 };
