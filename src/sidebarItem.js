@@ -59,6 +59,25 @@ export default [
             url: '/survey/create/selection',
             name: '선택형 추가',
           },
+          {
+            url: '/survey/create/short',
+            name: '단답형 추가',
+          },
+          {
+            url: '/survey/create/long',
+            name: '장문형 추가',
+          },
+        ],
+      },
+      {
+        url: null,
+        name: '통계 페이지',
+        icon: 'PlusSquareIcon',
+        submenu: [
+          {
+            url: '/survey/statistics/selectionStatistics',
+            name: '선택형 퀴즈 통계',
+          },
         ],
       },
     ],
