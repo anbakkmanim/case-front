@@ -9,7 +9,6 @@ export default {
     commit('TAG_UPDATE_CHECKED', payload);
   },
   applySurveyFilter({ commit }, filterName) {
-    console.log('filter', filterName);
     commit('APPLY_SURVEY_FILTER', filterName);
   },
   setSurveySearchQuery({ commit }, query) {

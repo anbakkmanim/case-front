@@ -1,10 +1,9 @@
 export default {
   SET_SURVEY(state, taskObj) {
-    const newSurvey = Object.assign({}, taskObj);
-    state.surveyArray = newSurvey;
+    state.surveyArray = taskObj;
   },
   SET_TAG(state, tags) {
-    const newTag = tags.map(v => ({ ...v, sorted: true }));
+    const newTag = tags.map(v => ({ ...v, sorted: false }));
     state.tags = newTag;
   },
   TAG_UPDATE_CHECKED(state, tagInfo) {

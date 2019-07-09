@@ -7,8 +7,8 @@
       <template v-for="filter in sortFilter">
         <div
           class="flex mt-6 cursor-pointer"
-          :class="{ 'text-primary': sort === filter.filter }"
-          @click="$store.dispatch('survey/applySurveyFilter', filter.filter)"
+          :class="{ 'text-primary': orderBy === filter.filter }"
+          @click="updateOrderBy(filter.filter)"
           :key="filter.filter"
         >
           <feather-icon
@@ -36,8 +36,8 @@
           :key="index"
         >
           <vs-checkbox
-            @change="e => updateCheckState(e, tag)"
-            :value="tag.sorted"
+            @change="e => updateCheckState(e, index)"
+            :checked="tag.sorted"
           >
             <span class="text-lg">{{ tag.i_interest }}</span>
           </vs-checkbox>
@@ -67,20 +67,22 @@ export default {
     });
   },
   methods: {
-    updateCheckState(e, tag) {
+    updateCheckState(e, idx) {
       this.$store.dispatch('survey/updateTag', {
-        idx: tag.i_idx,
-        value: e.target.value,
+        idx,
+        value: e.target.checked,
       });
+    },
+    updateOrderBy(filter) {
+      this.$store.dispatch('survey/applySurveyFilter', filter);
     },
   },
   computed: {
     tags() {
-      return this.$store.state.survey.tags;
+      return this.$store.getters['survey/tags'];
     },
     orderBy() {
-      console.log('getOrderBy');
-      return this.$store.state.survey.surveyOrderBy;
+      return this.$store.getters['survey/surveyOrderBy'];
     },
   },
 };
