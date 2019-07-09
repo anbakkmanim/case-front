@@ -13,7 +13,7 @@
     >
       <!-- <todo-add-new></todo-add-new> -->
       <VuePerfectScrollbar class="todo-scroll-area" :settings="settings">
-        <survey-filter @closeSidebar="toggleTodoSidebar"></survey-filter>
+        <survey-filter @closeSidebar="toggleSurveySidebar"></survey-filter>
       </VuePerfectScrollbar>
     </vs-sidebar>
 
@@ -28,7 +28,7 @@
         <feather-icon
           class="md:inline-flex lg:hidden ml-4 mr-4 cursor-pointer"
           icon="MenuIcon"
-          @click.stop="toggleTodoSidebar(true)"
+          @click.stop="toggleSurveySidebar(true)"
         ></feather-icon>
 
         <!-- SEARCH BAR -->
@@ -56,14 +56,11 @@
         >
           <li
             class="cursor-pointer todo_todo-item"
-            v-for="(todoItem, index) in todoList"
-            :key="String(todoFilter) + String(todoItem.id)"
+            v-for="(surveyItem, index) in survey"
+            :key="String(orderBy) + String(surveyItem.ca_idx)"
             :style="[{ transitionDelay: index * 0.1 + 's' }]"
           >
-            <survey-item
-              :todoItemId="todoItem.id"
-              @showDisplayPrompt="showDisplayPrompt($event)"
-            ></survey-item>
+            <survey-item :survey="surveyItem"></survey-item>
           </li>
         </transition-group>
       </VuePerfectScrollbar>
@@ -71,12 +68,12 @@
     </div>
 
     <!-- EDIT TODO DIALOG -->
-    <todo-edit
-      :displayPrompt="displayPrompt"
-      :todoItemId="todoIdToEdit"
-      @hideDisplayPrompt="hidePrompt"
-      v-if="displayPrompt"
-    ></todo-edit>
+    <!-- <todo-edit -->
+    <!-- :displayPrompt="displayPrompt" -->
+    <!-- :todoItemId="todoIdToEdit" -->
+    <!-- @hideDisplayPrompt="hidePrompt" -->
+    <!-- v-if="displayPrompt" -->
+    <!-- ></todo-edit> -->
   </div>
 </template>
 
@@ -89,8 +86,6 @@ export default {
   data() {
     return {
       clickNotClose: true,
-      displayPrompt: false,
-      todoIdToEdit: 0,
       isSidebarActive: true,
       windowWidth: window.innerWidth,
       settings: {
@@ -100,37 +95,27 @@ export default {
     };
   },
   watch: {
-    todoFilter() {
+    orderBy() {
       this.$refs.todoListPS.$el.scrollTop = 0;
     },
   },
   computed: {
-    todo() {
-      return this.$store.state.todo.todoArray;
+    survey() {
+      return this.$store.getters['survey/surveyList'];
     },
-    todoFilter() {
-      return this.$store.state.todo.todoFilter;
-    },
-    todoList() {
-      return this.$store.getters['todo/todoList'];
+    orderBy() {
+      return this.$store.state.survey.orderBy;
     },
     searchQuery: {
       get() {
-        return this.$store.state.todo.todoSearchQuery;
+        return this.$store.state.survey.surveySearchQuery;
       },
       set(val) {
-        this.$store.dispatch('todo/setTodoSearchQuery', val);
+        this.$store.dispatch('todo/setSurveySearchQuery', val);
       },
     },
   },
   methods: {
-    showDisplayPrompt(itemId) {
-      this.todoIdToEdit = itemId;
-      this.displayPrompt = true;
-    },
-    hidePrompt() {
-      this.displayPrompt = false;
-    },
     handleWindowResize(event) {
       this.windowWidth = event.currentTarget.innerWidth;
       this.setSidebarWidth();
@@ -144,7 +129,7 @@ export default {
         this.clickNotClose = true;
       }
     },
-    toggleTodoSidebar(value = false) {
+    toggleSurveySidebar(value = false) {
       if (!value && this.clickNotClose) return;
       this.isSidebarActive = value;
     },
@@ -159,6 +144,13 @@ export default {
       window.addEventListener('resize', this.handleWindowResize);
     });
     this.setSidebarWidth();
+    this.$http.get('/case')
+      .then(({ data }) => {
+        this.$store.dispatch('survey/setSurvey', data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleWindowResize);

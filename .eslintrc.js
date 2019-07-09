@@ -21,6 +21,7 @@ module.exports = {
     "no-restricted-properties": 0,
     "object-curly-newline": 0,
     "no-underscore-dangle": 0,
+    "linebreak-style": "off"
   },
   "parserOptions": {
     "parser": "babel-eslint"

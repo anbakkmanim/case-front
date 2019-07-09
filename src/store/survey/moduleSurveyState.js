@@ -1,6 +1,5 @@
 export default {
-  surveyArray: [
-  ],
+  surveyArray: [],
   tags: [],
   orderBy: 'popular',
   surveySearchQuery: '',
