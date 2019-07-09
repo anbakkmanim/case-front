@@ -49,6 +49,19 @@ export default new Router({
           },
         },
         {
+          path: '/survey/create/normal',
+          component: () => import('./views/survey/MakeNormalSurvey.vue'),
+          meta: {
+            pageTitle: '일반 설문 추가',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '설문조사', url: '/survey' },
+              { title: '설문조사 추가', url: '/survey/create' },
+              { title: '일반 설문 추가', active: true },
+            ],
+          },
+        },
+        {
           path: '/survey/create/tournament',
           component: () => import('./views/survey/tournament.vue'),
           meta: {
