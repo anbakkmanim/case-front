@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'create',
+  name: 'short-answer',
   data() {
     return {
 
