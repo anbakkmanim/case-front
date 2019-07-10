@@ -1,7 +1,7 @@
 <template>
-  <div
+  <vs-col
     id="suvray-create-tournament"
-    class="border border-solid border-gray-400 rounded relative overflow-hidden"
+    class="relative overflow-hidden"
   >
     <case-form-wizard title="토너먼트 생성" subtitle="">
       <tab-content
@@ -73,7 +73,7 @@
 
       <tab-content title="토너먼트 최종 확인"> </tab-content>
     </case-form-wizard>
-  </div>
+  </vs-col>
 </template>
 
 <script>

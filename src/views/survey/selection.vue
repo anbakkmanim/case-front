@@ -1,7 +1,7 @@
 <template>
-  <div
+  <vs-col
     id="suvray-create-selection"
-    class="border border-solid border-gray-400 rounded relative overflow-hidden"
+    class="relative overflow-hidden"
   >
     <case-form-wizard title="선택형 퀴즈 생성" subtitle="">
       <tab-content
@@ -53,7 +53,7 @@
 
       <tab-content title="퀴즈 최종 확인"> </tab-content>
     </case-form-wizard>
-  </div>
+  </vs-col>
 </template>
 
 <script>
