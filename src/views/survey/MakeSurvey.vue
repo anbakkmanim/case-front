@@ -42,7 +42,9 @@
         </vs-col>
       </vs-row>
       <vs-row v-for="(question, index) in questions" :key="index">
+        <vs-divider v-if="index === 0" />
         <component :is="question.type" />
+        <vs-divider />
       </vs-row>
     </case-card>
   </div>
