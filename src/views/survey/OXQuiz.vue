@@ -19,28 +19,6 @@
               />
             </div>
           </div>
-          <div class="vx-row align-left">
-            <div class="vx-col w-full mb-2">
-              <label for class="vs-input--label">태그</label>
-              <div class="vs-con-input">
-                <vs-input
-                  size="small"
-                  class="mb-2 w-24"
-                  label-placeholder="태그 추가"
-                  @keypress="handleTagInput"
-                  v-model="tagInfo"
-                />
-                <vs-chip
-                  color="primary"
-                  @click="removeTag(index)"
-                  v-for="(tag, index) in tags"
-                  :key="index"
-                  closable
-                  >{{ tag }}</vs-chip
-                >
-              </div>
-            </div>
-          </div>
         </form>
       </tab-content>
       <tab-content title="설문조사 최종 확인"> </tab-content>
