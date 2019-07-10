@@ -7,7 +7,7 @@
         </vs-col>
         <vs-col vs-w="3" vs-type="flex" vs-justify="center" vs-align="center">
           <vs-dropdown>
-            <vs-button type="filled" color="success" class="flex-1 btnx hover:cursor-pointer">문항 추가</vs-button>
+            <vs-button type="filled" class="flex-1 btnx hover:cursor-pointer">문항 추가</vs-button>
             <vs-dropdown-menu>
               <vs-dropdown-group vs-label="주관형" class="mt-0 outline-none border-0">
                 <vs-dropdown-item @click="addQuestion('ShortAnswer')">
@@ -46,6 +46,39 @@
         <component :is="question.type" />
         <vs-divider />
       </vs-row>
+      <vs-row class="mt-3">
+        <vs-col>
+          <vs-input
+            class="mb-2 w-32"
+            label="태그 추가"
+            @keypress="handleTagInput"
+            v-model="tagInfo"
+          />
+          <vs-chip
+            color="primary"
+            @click="removeTag(index)"
+            v-for="(tag, index) in tags"
+            :key="index"
+            closable
+            >{{ tag }}</vs-chip
+          >
+        </vs-col>
+      </vs-row>
+      <vs-row class="mt-3">
+        <vs-col>
+          <label for class="vs-input--label">크레딧</label>
+          <vs-input-number
+            class="mb-2 w-24"
+            v-model="credit"
+            :step="50"
+          />
+        </vs-col>
+      </vs-row>
+      <vs-row vs-w="12" vs-type="flex">
+        <vs-col vs-type="flex" vs-w="3" vs-offset="9" vs-justify="center" vs-align="center">
+          <vs-button type="filled" color="success" class="btnx hover:cursor-pointer">설문 등록</vs-button>
+        </vs-col>
+      </vs-row>
     </case-card>
   </div>
 </template>
@@ -66,6 +99,9 @@ export default {
       title: '',
       loading: false,
       questions: [],
+      tagInfo: '',
+      tags: [],
+      credit: 0,
     };
   },
   methods: {
@@ -76,11 +112,21 @@ export default {
       console.log(type);
       console.log(this.questions);
     },
+    handleTagInput(e) {
+      if (e.keyCode === 13 && this.tagInfo.length > 0) {
+        this.tags.push(this.tagInfo);
+        this.tagInfo = '';
+        e.preventDefault();
+      }
+    },
+    removeTag(idx) {
+      this.tags.splice(idx, 1);
+    },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .icon-adjust {
   height: 1em;
   width: 1em;
