@@ -70,6 +70,7 @@ export default {
   },
   created() {
     this.$http.get('/case/getInterest').then(({ data }) => {
+      if (!data) throw new Error('데이터 오류');
       this.$store.dispatch('survey/setTags', data);
     });
   },

@@ -38,9 +38,25 @@ Vue.use(VueFormWizard);
 
 if (process.env.NODE_ENV !== 'production') { window.baseURL = 'http://10.80.161.110:8000'; } else { window.baseURL = ''; }
 // Vue Axios 사용
-Vue.prototype.$http = Axios.create({
+const axios = Axios.create({
   baseURL: `${window.baseURL}/api`,
 });
+axios.interceptors.response.use(
+  (response) => {
+    console.log(response);
+    return response;
+  },
+  (error) => {
+    console.log(error);
+    Vue.prototype.$vs.notify({
+      title: `요청 에러 (${error.message})`,
+      time: 10,
+      color: 'danger',
+      text: process.env.NODE_ENV === 'production' ? '서버에 요청을 보내는데 실패하였습니다. 네트워크 상태를 확인해 주세요' : '서버가 꺼져있거나 ip가 잘못되었습니다.',
+    });
+  },
+);
+Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
 

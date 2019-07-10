@@ -1,5 +1,8 @@
 <template>
-  <div class="px-4 py-4 list-item-component">
+  <div
+    @click="$emit('displayInfo', survey)"
+    class="px-4 py-4 list-item-component"
+  >
     <div class="vx-row">
       <div
         class="vx-col w-full sm:w-5/6 flex sm:items-center sm:flex-row flex-col"
