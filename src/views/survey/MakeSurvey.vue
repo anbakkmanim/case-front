@@ -109,8 +109,6 @@ export default {
       this.questions.push({
         type,
       });
-      console.log(type);
-      console.log(this.questions);
     },
     handleTagInput(e) {
       if (e.keyCode === 13 && this.tagInfo.length > 0) {
