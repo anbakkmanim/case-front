@@ -67,6 +67,10 @@ export default [
             url: '/survey/create/long',
             name: '장문형 추가',
           },
+          {
+            url: '/survey/create/OX',
+            name: 'OX형 추가',
+          },
         ],
       },
       {
