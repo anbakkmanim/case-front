@@ -59,6 +59,10 @@ import FileUpload from 'vue-upload-component';
 import CaseFormWizard from '@/components/form/CaseFormWizard.vue';
 
 export default {
+<<<<<<< HEAD
+=======
+  name: 'short-answer',
+>>>>>>> 6b54ab38ff2ade0035416caeac43538a8cc4eeab
   data() {
     return {
       title: '',

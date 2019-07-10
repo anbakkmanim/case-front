@@ -152,7 +152,8 @@ export default {
       scale: 2,
     });
     this.$http.get('/case')
-      .then(({ data }) => {
+      .then((response) => {
+        const { data } = response;
         this.$store.dispatch('survey/setSurvey', data);
         this.$vs.loading.close(this.$refs.todoListPS.$el);
       })

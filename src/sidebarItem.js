@@ -40,17 +40,16 @@ export default [
       {
         url: '/survey',
         name: '설문조사',
-        exact: false,
+      },
+      {
+        url: '/survey/create',
+        name: '설문조사 추가',
       },
       {
         url: null,
-        name: '설문조사 추가 (test)',
+        name: '설문조사 종류',
         icon: 'PlusSquareIcon',
         submenu: [
-          {
-            url: '/survey/create/normal',
-            name: '일반형 추가',
-          },
           {
             url: '/survey/create/tournament',
             name: '토너먼트형 추가',
