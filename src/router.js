@@ -64,12 +64,12 @@ export default new Router({
           path: '/survey/create/tournament',
           component: () => import('./views/survey/tournament.vue'),
           meta: {
-            pageTitle: '토너먼트 퀴즈 추가',
+            pageTitle: '토너먼트 설문조사 추가',
             breadcrumb: [
               { title: '홈', url: '/' },
               { title: '설문조사', url: '/survey' },
               { title: '설문조사 추가', url: '/survey/create' },
-              { title: '토너먼트 퀴즈 추가', active: true },
+              { title: '토너먼트 설문조사 추가', active: true },
             ],
           },
         },
@@ -77,12 +77,12 @@ export default new Router({
           path: '/survey/create/selection',
           component: () => import('./views/survey/selection.vue'),
           meta: {
-            pageTitle: '선택형 퀴즈 추가',
+            pageTitle: '선택형 설문조사 추가',
             breadcrumb: [
               { title: '홈', url: '/' },
               { title: '설문조사', url: '/survey' },
               { title: '설문조사 추가', url: '/survey/create' },
-              { title: '선택형 퀴즈 추가', active: true },
+              { title: '선택형 설문조사 추가', active: true },
             ],
           },
         },
@@ -90,12 +90,12 @@ export default new Router({
           path: '/survey/create/short',
           component: () => import('./views/survey/ShortAnswer.vue'),
           meta: {
-            pageTitle: '단답형 퀴즈 추가',
+            pageTitle: '단답형 설문조사 추가',
             breadcrumb: [
               { title: '홈', url: '/' },
               { title: '설문조사', url: '/survey' },
               { title: '설문조사 추가', url: '/survey/create' },
-              { title: '단답형 퀴즈 추가', active: true },
+              { title: '단답형 설문조사 추가', active: true },
             ],
           },
         },
@@ -103,12 +103,25 @@ export default new Router({
           path: '/survey/create/long',
           component: () => import('./views/survey/LongAnswer.vue'),
           meta: {
-            pageTitle: '단답형 퀴즈 추가',
+            pageTitle: '장문형 설문조사 추가',
             breadcrumb: [
               { title: '홈', url: '/' },
               { title: '설문조사', url: '/survey' },
               { title: '설문조사 추가', url: '/survey/create' },
-              { title: '장문형 퀴즈 추가', active: true },
+              { title: '장문형 설문조사 추가', active: true },
+            ],
+          },
+        },
+        {
+          path: '/survey/create/OX',
+          component: () => import('./views/survey/OXQuiz.vue'),
+          meta: {
+            pageTitle: 'OX 설문조사 추가',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '설문조사', url: '/survey' },
+              { title: '설문조사 추가', url: '/survey/create' },
+              { title: 'OX 설문조사 추가', active: true },
             ],
           },
         },
@@ -116,11 +129,11 @@ export default new Router({
           path: '/survey/statistics/selectionStatistics',
           component: () => import('./views/statistics/selectionStatistics.vue'),
           meta: {
-            pageTitle: '선택형 퀴즈 통계',
+            pageTitle: '선택형 설문조사 통계',
             breadcrumb: [
               { title: '홈', url: '/' },
               { title: '통계', url: '/statistics' },
-              { title: '선택형 퀴즈 통계', active: true },
+              { title: '선택형 설문조사 통계', active: true },
             ],
           },
         },
