@@ -74,7 +74,7 @@
           />
         </vs-col>
       </vs-row>
-      <vs-row vs-w="12" vs-type="flex">
+      <vs-row vs-w="12" vs-type="flex" class="mb-4">
         <vs-col vs-type="flex" vs-w="3" vs-offset="9" vs-justify="center" vs-align="center">
           <vs-button type="filled" color="success" class="btnx hover:cursor-pointer">설문 등록</vs-button>
         </vs-col>
