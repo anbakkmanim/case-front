@@ -151,7 +151,7 @@ export default {
       container: this.$refs.todoListPS.$el,
       scale: 2,
     });
-    this.$http.get('/casee')
+    this.$http.get('/case')
       .then((response) => {
         const { data } = response;
         this.$store.dispatch('survey/setSurvey', data);
