@@ -38,6 +38,23 @@
               >
             </div>
           </div>
+          <vs-button @click="AddImage" class="m-6">이미지 추가</vs-button>
+          <div class=" w-full mb-2 vx-col" v-if="isAdd">
+            <file-upload
+              v-if="isSet"
+              extensions="gif,jpg,jpeg,png,webp"
+              v-model="images"
+              @input-file="onAddFile"
+              @input-filter="onFilterFile"
+            >
+              <img :src="images.length > 0 ? images[0].url : '/img/default.jpg'" class="sm:w-2/3 w-full mb-2 mt-6"/>
+            </file-upload>
+            <img
+              v-else
+              :src="images.length > 0 ? images[0].url : '/img/default.jpg'"
+              class="sm:w-2/3 w-full mb-2 mt-6"
+            />
+          </div>
         </form>
       </tab-content>
 
@@ -53,6 +70,7 @@
 </template>
 
 <script>
+import FileUpload from 'vue-upload-component';
 import CaseFormWizard from '@/components/form/CaseFormWizard.vue';
 import SelectionItem from './selectionItem.vue';
 
@@ -60,11 +78,12 @@ export default {
   data() {
     return {
       title: '',
-      tourCount: [4, 8, 16, 32, 64],
-      selectCount: 4,
-      tags: ['computer', 'test', 'test2'],
-      tagInfo: '',
       qu_idx: 0,
+      explain: '',
+      images: [],
+      tags: [],
+      isAdd: false,
+      isSet: true,
     };
   },
   methods: {
@@ -79,6 +98,24 @@ export default {
         e.preventDefault();
       }
     },
+    onAddFile(newFile) {
+      this.media = newFile.file;
+    },
+    onFilterFile(newFile, oldFile, prevent) {
+      if (newFile && !oldFile) {
+        if (!/\.(gif|jpg|jpeg|png|webp)$/i.test(newFile.name)) {
+          this.alert('이미지를 올려 주세요');
+          return prevent();
+        }
+      }
+      if (newFile && (!oldFile || newFile.file !== oldFile.file)) {
+        newFile.url = '';
+        const URL = window.URL || window.webkitURL;
+        if (URL && URL.createObjectURL) {
+          newFile.url = URL.createObjectURL(newFile.file);
+        }
+      }
+    },
     validate(step) {
       return () => new Promise((resolve, reject) => {
         this.$vs.loading();
@@ -89,7 +126,7 @@ export default {
               this.$http.post('/case/addQuiz', {
                 question: this.title,
                 table: 'example',
-                type: 'tournament',
+                type: 'example',
               })
                 .then(({ data }) => {
                   this.qu_idx = data.idx;
@@ -111,10 +148,14 @@ export default {
         });
       });
     },
+    AddImage() {
+      this.isAdd = true;
+    },
   },
   components: {
     CaseFormWizard,
     SelectionItem,
+    FileUpload,
   },
 };
 </script>
