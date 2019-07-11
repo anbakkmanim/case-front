@@ -17,6 +17,24 @@
                 v-model="title"
                 v-validate="'required'"
               />
+
+              <vs-button @click="AddImage" class="m-6">이미지 추가</vs-button>
+              <div class=" w-full mb-2 vx-col" v-if="isAdd">
+                <file-upload
+                  v-if="isSet"
+                  extensions="gif,jpg,jpeg,png,webp"
+                  v-model="images"
+                  @input-file="onAddFile"
+                  @input-filter="onFilterFile"
+                >
+                  <img :src="images.length > 0 ? images[0].url : '/img/default.jpg'" class="sm:w-2/3 w-full mb-2 mt-6"/>
+                </file-upload>
+                <img
+                  v-else
+                  :src="images.length > 0 ? images[0].url : '/img/default.jpg'"
+                  class="sm:w-2/3 w-full mb-2 mt-6"
+                />
+              </div>
             </div>
           </div>
         </form>
@@ -27,30 +45,40 @@
 </template>
 
 <script>
+import FileUpload from 'vue-upload-component';
 import CaseFormWizard from '@/components/form/CaseFormWizard.vue';
-import SelectionItem from './selectionItem.vue';
 
 export default {
   data() {
     return {
       title: '',
-      tourCount: [4, 8, 16, 32, 64],
-      selectCount: 4,
-      tags: ['computer', 'test', 'test2'],
-      tagInfo: '',
       qu_idx: 0,
+      answer: '',
+      explain: '',
+      images: [],
+      isAdd: false,
+      isSet: true,
+      media: '',
     };
   },
   methods: {
     onComplate() {},
-    removeTag(idx) {
-      this.tags.splice(idx, 1);
+    onAddFile(newFile) {
+      this.media = newFile.file;
     },
-    handleTagInput(e) {
-      if (e.keyCode === 13 && this.tagInfo.length > 0) {
-        this.tags.push(this.tagInfo);
-        this.tagInfo = '';
-        e.preventDefault();
+    onFilterFile(newFile, oldFile, prevent) {
+      if (newFile && !oldFile) {
+        if (!/\.(gif|jpg|jpeg|png|webp)$/i.test(newFile.name)) {
+          this.alert('이미지를 올려 주세요');
+          return prevent();
+        }
+      }
+      if (newFile && (!oldFile || newFile.file !== oldFile.file)) {
+        newFile.url = '';
+        const URL = window.URL || window.webkitURL;
+        if (URL && URL.createObjectURL) {
+          newFile.url = URL.createObjectURL(newFile.file);
+        }
       }
     },
     validate(step) {
@@ -63,7 +91,7 @@ export default {
               this.$http.post('/case/addQuiz', {
                 question: this.title,
                 table: 'example',
-                type: 'tournament',
+                type: 'ox',
               })
                 .then(({ data }) => {
                   this.qu_idx = data.idx;
@@ -85,10 +113,13 @@ export default {
         });
       });
     },
+    AddImage() {
+      this.isAdd = true;
+    },
   },
   components: {
     CaseFormWizard,
-    SelectionItem,
+    FileUpload,
   },
 };
 </script>
