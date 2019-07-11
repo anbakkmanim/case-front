@@ -1,10 +1,10 @@
 <template>
   <vs-col
     id="suvray-create-selection"
-    class="elative overflow-hidden">
+    class="relative overflow-hidden">
     <case-form-wizard title="OX형 설문조사 생성" subtitle="">
       <tab-content
-        title="설문조사 기본 설정"
+        title="퀴즈 기본 설정"
         :before-change="validate('step1')"
       >
         <form @submit="e => e.preventDefault()" data-vv-scope="step1">
@@ -12,11 +12,33 @@
             <div class="vx-col sm:w-1/2 w-full mb-2">
               <vs-input
                 class="w-full"
-                label="설문조사 제목"
+                label="퀴즈 제목"
                 name="title"
                 v-model="title"
                 v-validate="'required'"
               />
+              <ul class="demo-alignment">
+                <li>
+                  <label class="vs-component con-vs-radio vs-radio-primary">
+                    <input name="" class="vs-radio--input" value="true" type="radio" v-model="answer">
+                    <span class="vs-radio">
+                      <span class="vs-radio--borde" style="border: 2px solid rgb(200, 200, 200);"></span>
+                      <span class="vs-radio--circle"></span>
+                    </span>
+                    <span class="vs-radio--label">O</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="vs-component con-vs-radio vs-radio-primary">
+                    <input name="" class="vs-radio--input" value="false" type="radio" v-model="answer">
+                    <span class="vs-radio">
+                      <span class="vs-radio--borde" style="border: 2px solid rgb(200, 200, 200);"></span>
+                      <span class="vs-radio--circle"></span>
+                    </span>
+                    <span class="vs-radio--label">X</span>
+                  </label>
+                </li>
+              </ul>
 
               <vs-button @click="AddImage" class="m-6">이미지 추가</vs-button>
               <div class=" w-full mb-2 vx-col" v-if="isAdd">
@@ -39,7 +61,7 @@
           </div>
         </form>
       </tab-content>
-      <tab-content title="설문조사 최종 확인"> </tab-content>
+      <tab-content title="퀴즈 최종 확인"> </tab-content>
     </case-form-wizard>
   </vs-col>
 </template>
