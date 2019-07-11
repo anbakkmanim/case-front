@@ -39,7 +39,14 @@ export default new Router({
         },
         {
           path: '/shop',
-          component: () => import('./views/CreditShop.vue'),
+          component: () => import('./views/creditShop/CreditShop.vue'),
+          meta: {
+            pageTitle: '크레딧 상점',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '크레딧 상점 목록', active: true },
+            ],
+          },
         },
         {
           path: '/survey',
