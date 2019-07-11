@@ -1,7 +1,7 @@
 <template>
-  <div
+  <vs-col
     id="suvray-create-selection"
-    class="border border-solid border-gray-400 rounded relative overflow-hidden">
+    class="elative overflow-hidden">
     <case-form-wizard title="OX형 설문조사 생성" subtitle="">
       <tab-content
         title="설문조사 기본 설정"
@@ -41,7 +41,7 @@
       </tab-content>
       <tab-content title="설문조사 최종 확인"> </tab-content>
     </case-form-wizard>
-  </div>
+  </vs-col>
 </template>
 
 <script>
