@@ -119,7 +119,7 @@ export default {
       isNavbarDark: false,
       routeTitle: this.$route.meta.pageTitle,
       sidebarItems,
-      windowWidth: window.innerWidth, // width of windows
+      windowWidth: null,
     };
   },
   watch: {
@@ -202,8 +202,8 @@ export default {
       }
     },
   },
-  created() {
-    console.log(this.$route);
+  mounted() {
+    this.windowWidth = window.innerWidth;
     this.setSidebarWidth();
     if (this.navbarColor === '#fff' && this.isThemeDark) {
       this.updateNavbarColor('#10163a');

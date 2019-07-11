@@ -1,13 +1,7 @@
 <template>
-  <vs-col
-    id="suvray-create-selection"
-    class="relative overflow-hidden"
-  >
+  <vs-col id="suvray-create-selection" class="relative overflow-hidden">
     <case-form-wizard title="장문형 퀴즈 생성" subtitle="">
-      <tab-content
-        title="퀴즈 기본 설정"
-        :before-change="validate('step1')"
-      >
+      <tab-content title="퀴즈 기본 설정" :before-change="validate('step1')">
         <form @submit="e => e.preventDefault()" data-vv-scope="step1">
           <div class="vx-row align-left">
             <div class="vx-col sm:w-1/2 w-full mb-2">
@@ -28,16 +22,24 @@
                   @input-file="onAddFile"
                   @input-filter="onFilterFile"
                 >
-                  <img :src="images.length > 0 ? images[0].url : '/img/default.jpg'" class="sm:w-2/3 w-full mb-2 mt-6"/>
+                  <img
+                    :src="
+                      images.length > 0
+                        ? images[0].url
+                        : '@/assets/images/profile/default.png'
+                    "
+                  />
                 </file-upload>
                 <img
                   v-else
-                  :src="images.length > 0 ? images[0].url : '/img/default.jpg'"
-                  class="sm:w-2/3 w-full mb-2 mt-6"
+                  :src="
+                    images.length > 0
+                      ? images[0].url
+                      : '@/assets/images/profile/default.png'
+                  "
                 />
               </div>
             </div>
-
           </div>
         </form>
       </tab-content>

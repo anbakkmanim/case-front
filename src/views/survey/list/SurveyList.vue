@@ -88,7 +88,7 @@ export default {
     return {
       clickNotClose: true,
       isSidebarActive: true,
-      windowWidth: window.innerWidth,
+      windowWidth: null,
       settings: {
         maxScrollbarLength: 60,
         wheelSpeed: 0.30,
@@ -140,13 +140,12 @@ export default {
     SurveyFilter,
     VuePerfectScrollbar,
   },
-  created() {
+  mounted() {
+    this.windowWidth = window.innerWidth;
     this.$nextTick(() => {
       window.addEventListener('resize', this.handleWindowResize);
     });
     this.setSidebarWidth();
-  },
-  mounted() {
     this.$vs.loading({
       container: this.$refs.todoListPS.$el,
       scale: 2,

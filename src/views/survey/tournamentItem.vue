@@ -17,11 +17,21 @@
         @input-file="onAddFile"
         @input-filter="onFilterFile"
       >
-        <img :src="images.length > 0 ? images[0].url : '/img/default.jpg'" />
+        <img
+          :src="
+            images.length > 0
+              ? images[0].url
+              : '@/assets/images/profile/default.png'
+          "
+        />
       </file-upload>
       <img
         v-else
-        :src="images.length > 0 ? images[0].url : '/img/default.jpg'"
+        :src="
+          images.length > 0
+            ? images[0].url
+            : '@/assets/images/profile/default.png'
+        "
       />
     </div>
   </vs-card>
