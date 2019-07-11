@@ -13,7 +13,7 @@
     >
       <!-- <todo-add-new></todo-add-new> -->
       <VuePerfectScrollbar class="todo-scroll-area" :settings="settings">
-        <credit-filter @closeSidebar="toggleSurveySidebar"></credit-filter>
+        <credit-filter></credit-filter>
       </VuePerfectScrollbar>
     </vs-sidebar>
 
@@ -28,7 +28,6 @@
         <feather-icon
           class="md:inline-flex lg:hidden ml-4 mr-4 cursor-pointer"
           icon="MenuIcon"
-          @click.stop="toggleSurveySidebar(true)"
         ></feather-icon>
 
         <!-- SEARCH BAR -->
@@ -37,14 +36,13 @@
           icon-pack="feather"
           icon="icon-search"
           placeholder="검색.."
-          v-model="searchQuery"
           class="vs-input-no-border vs-input-no-shdow-focus no-icon-border w-full"
         />
       </div>
 
       <!-- TODO LIST -->
       <VuePerfectScrollbar
-        id="surveyList"
+        id="creditList"
         class="todo-content-scroll-area vs-con-loading__container"
         :settings="settings"
         ref="todoListPS"

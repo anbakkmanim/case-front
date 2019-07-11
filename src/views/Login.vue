@@ -9,9 +9,9 @@
           <div class="vx-row no-gutter justify-center items-center">
             <div class="vx-col hidden lg:block lg:w-1/2">
               <img
-                src="@/assets/images/pages/login.png"
+                src="@/assets/case_logo.png"
                 alt="login"
-                class="mx-auto"
+                class="mx-auto lg:w-3/4 mb-2"
               />
             </div>
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 bg-white text-left">
