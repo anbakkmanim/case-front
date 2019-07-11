@@ -43,11 +43,11 @@ export default {
   data() {
     return {
       items: [
-        { name: '아메리카노', image: '', price: '5,000p', company: '이디야' },
-        { name: '러블리어피치 얼굴쿠션', image: '', price: '20,000p', company: '카카오프렌즈' },
-        { name: '피큐어키링_니니즈', image: '', price: '11,500p', company: '카카오프렌즈' },
-        { name: '허니프렌즈 소프트인형', image: '', price: '35,000p', company: '카카오프렌즈' },
-        { name: '민트초코설빙', image: '', price: '10,900p', company: '설빙' },
+        { name: '아메리카노', image: '/img/coffee.1106d1e6.jpg', price: '5,000p', company: '이디야' },
+        { name: '러블리어피치 얼굴쿠션', image: '/img/apeach_item.83ff8768.jpg', price: '20,000p', company: '카카오프렌즈' },
+        { name: '피큐어키링_니니즈', image: '/img/figure.d7cab880.jpg', price: '11,500p', company: '카카오프렌즈' },
+        { name: '허니프렌즈 소프트인형', image: '/img/honey.89d2901c.jpg', price: '35,000p', company: '카카오프렌즈' },
+        { name: '민트초코설빙', image: '/img/ice.fd43104b.png', price: '10,900p', company: '설빙' },
       ],
     };
   },
