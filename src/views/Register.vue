@@ -5,7 +5,7 @@
         <div slot="no-body" class="full-page-bg-color">
           <div class="vx-row no-gutter">
             <div class="vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center text-center">
-              <img src="@/assets/images/pages/register.jpg" alt="register" class="mx-auto">
+              <img src="@/assets/case_logo.png" alt="register" class="mx-auto lg:w-3/4 mb-2">
             </div>
             <div class="vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center bg-white">
               <div class="p-8">
@@ -15,9 +15,9 @@
                 </div>
                 <div class="clearfix text-left">
                   <vs-input
-                      v-validate="'required|min:3'"
+                      v-validate="'required'"
                       data-vv-validate-on="blur"
-                      label-placeholder="닉네임"
+                      label-placeholder="이름"
                       name="username"
                       v-model="username"
                       class="w-full" />
