@@ -148,7 +148,7 @@ export default {
       wheelSpeed: 1,
       swipeEasing: true,
     },
-    windowWidth: window.innerWidth, // width of windows
+    windowWidth: null, // width of windows
     showShadowBottom: false,
   }),
   computed: {
@@ -274,6 +274,7 @@ export default {
     VuePerfectScrollbar,
   },
   mounted() {
+    this.windowWidth = window.innerWidth;
     this.$nextTick(() => {
       window.addEventListener('resize', this.handleWindowResize);
     });

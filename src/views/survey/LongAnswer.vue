@@ -26,7 +26,7 @@
                     :src="
                       images.length > 0
                         ? images[0].url
-                        : '@/assets/images/profile/default.png'
+                        : require('@/assets/images/default.jpg')
                     "
                   />
                 </file-upload>
@@ -35,7 +35,7 @@
                   :src="
                     images.length > 0
                       ? images[0].url
-                      : '@/assets/images/profile/default.png'
+                      : require('@/assets/images/default.jpg')
                   "
                 />
               </div>
