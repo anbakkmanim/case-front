@@ -48,17 +48,6 @@ export default new Router({
           },
         },
         {
-          path: '/survey/view',
-          component: () => import('./views/survey/view/SurveyView.vue'),
-          meta: {
-            pageTitle: '설문조사 보기',
-            breadcrumb: [
-              { title: '홈', url: '/' },
-              { title: '설문조사 보기', active: true },
-            ],
-          },
-        },
-        {
           path: '/survey/create',
           component: () => import('./views/survey/MakeSurvey.vue'),
           meta: {

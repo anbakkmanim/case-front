@@ -14,14 +14,6 @@
                 </div>
                 <div class="profile-img-container pointer-events-none">
                     <div>
-                      <!-- <img
-                    :src="
-                      images.length > 0
-                        ? images[0].url
-                        : require('@/assets/images/default.jpg')
-                    "
-                    class="sm:w-2/3 w-full mb-2 mt-6"
-                  /> -->
                         <vs-avatar class="user-profile-img" :src="require('@/assets/images/profile/default.png')" size="200px" />
                     </div>
                 </div>
@@ -94,7 +86,10 @@
             </div>
 
         </div>
-
+        <vs-popup classContent="popup-example" title="Lorem ipsum dolor sit amet" :active.sync="popupActive2">
+          <vs-input class="inputx mb-3" placeholder="Placeholder" v-model="value1" />
+          <vs-input disabled class="inputx mb-3" placeholder="Disabled" v-model="value2" />
+        </vs-popup>
     </div>
 </template>
 
@@ -111,6 +106,10 @@ export default {
       user: {},
       userCoverImg: 'cover.jpg',
       wasSidebarOpen: null,
+      value1: '',
+      value2: '',
+      popupActive2: false,
+      popupActive3: false,
     };
   },
   created() {
