@@ -75,19 +75,19 @@ export default [
         submenu: [
           {
             url: '/survey/statistics/selectionStatistics',
-            name: '선택형 퀴즈 통계',
+            name: '선택형 설문조사 통계',
           },
           {
             url: '/survey/statistics/OXStatistics',
-            name: 'OX 퀴즈 통계',
+            name: 'OX 설문조사 통계',
           },
           {
             url: '/survey/statistics/shortAnswerStatistics',
-            name: '단답형 퀴즈 통계',
+            name: '단답형 설문조사 통계',
           },
           {
             url: '/survey/statistics/longAnswerStatistics',
-            name: '장문형 퀴즈 통계',
+            name: '장문형 설문조사 통계',
           },
           {
             url: '/survey/statistics/tournamentStatistics',
