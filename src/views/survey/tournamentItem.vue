@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import FileUpload from 'vue-upload-component';
+import FileUpload from 'vue-upload-component/dist/vue-upload-component.part';
 
 export default {
   data() {
