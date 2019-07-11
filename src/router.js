@@ -136,6 +136,54 @@ export default new Router({
             ],
           },
         },
+        {
+          path: '/survey/statistics/OXStatistics',
+          component: () => import('./views/statistics/OXStatistics.vue'),
+          meta: {
+            pageTitle: 'OX 설문조사 통계',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '통계', url: '/statistics' },
+              { title: 'OX 설문조사 통계', active: true },
+            ],
+          },
+        },
+        {
+          path: '/survey/statistics/shortAnswerStatistics',
+          component: () => import('./views/statistics/shortAnswerStatistics.vue'),
+          meta: {
+            pageTitle: '단답형 설문조사 통계',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '통계', url: '/statistics' },
+              { title: '단답형 설문조사 통계', active: true },
+            ],
+          },
+        },
+        {
+          path: '/survey/statistics/longAnswerStatistics',
+          component: () => import('./views/statistics/longAnswerStatistics.vue'),
+          meta: {
+            pageTitle: '장문형 설문조사 통계',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '통계', url: '/statistics' },
+              { title: '장문형 설문조사 통계', active: true },
+            ],
+          },
+        },
+        {
+          path: '/survey/statistics/tournamentStatistics',
+          component: () => import('./views/statistics/tournamentStatistics.vue'),
+          meta: {
+            pageTitle: '토너먼트 통계',
+            breadcrumb: [
+              { title: '홈', url: '/' },
+              { title: '통계', url: '/statistics' },
+              { title: '토너먼트 통계', active: true },
+            ],
+          },
+        },
       ],
     },
     {

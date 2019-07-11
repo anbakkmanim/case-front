@@ -73,6 +73,22 @@ export default [
             url: '/survey/statistics/selectionStatistics',
             name: '선택형 퀴즈 통계',
           },
+          {
+            url: '/survey/statistics/OXStatistics',
+            name: 'OX 퀴즈 통계',
+          },
+          {
+            url: '/survey/statistics/shortAnswerStatistics',
+            name: '단답형 퀴즈 통계',
+          },
+          {
+            url: '/survey/statistics/longAnswerStatistics',
+            name: '장문형 퀴즈 통계',
+          },
+          {
+            url: '/survey/statistics/tournamentStatistics',
+            name: '토너먼트 통계',
+          },
         ],
       },
     ],
