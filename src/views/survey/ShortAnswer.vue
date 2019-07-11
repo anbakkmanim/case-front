@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import FileUpload from 'vue-upload-component';
+import FileUpload from 'vue-upload-component/dist/vue-upload-component.part';
 import CaseFormWizard from '@/components/form/CaseFormWizard.vue';
 
 export default {
