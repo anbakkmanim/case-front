@@ -1,7 +1,7 @@
 
 <template>
     <div class="item-grid-view vx-row match-height ">
-        <div class="vx-col sm:w-1/4 w-full m-4" v-for="item in items" :key="item.objectID">
+        <div class="vx-col sm:w-1/4 w-full mt-4 ml-4" v-for="item in items" :key="item.objectID">
             <case-card class="grid-view-item mb-base overflow-hidden">
                 <template slot="no-body">
 
@@ -22,8 +22,11 @@
 
                         <!-- TITLE & DESCRIPTION -->
                         <div class="my-4">
-                            <h6 class="truncate font-semibold mb-1">{{ item.name }}</h6>
-                            <p class="item-description truncate text-sm">{{ item.description }}</p>
+                            <vs-button class="float-right px-6 mb-5" type="border">구매</vs-button>
+                            <div>
+                              <p class="item-description truncate text-sm">{{ item.company }}</p>
+                              <h6 class="truncate font-semibold mb-1">{{ item.name }}</h6>
+                            </div>
                         </div>
                     </div>
 
@@ -40,16 +43,11 @@ export default {
   data() {
     return {
       items: [
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
-        { name: '아메리카노', image: '', price: '5,000p' },
+        { name: '아메리카노', image: '', price: '5,000p', company: '이디야' },
+        { name: '러블리어피치 얼굴쿠션', image: '', price: '20,000p', company: '카카오프렌즈' },
+        { name: '피큐어키링_니니즈', image: '', price: '11,500p', company: '카카오프렌즈' },
+        { name: '허니프렌즈 소프트인형', image: '', price: '35,000p', company: '카카오프렌즈' },
+        { name: '민트초코설빙', image: '', price: '10,900p', company: '설빙' },
       ],
     };
   },
