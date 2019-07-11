@@ -38,6 +38,10 @@ export default [
         name: '설문조사 추가',
       },
       {
+        url: '/survey/view',
+        name: '설문조사 보기',
+      },
+      {
         url: null,
         name: '설문조사 종류',
         icon: 'PlusSquareIcon',
