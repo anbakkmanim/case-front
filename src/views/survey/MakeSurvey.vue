@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div>
     <case-card>
       <vs-row vs-w="12" vs-type="flex" vs-align="center" vs-justify="space-between">
         <vs-col vs-w="9" vs-type="flex" vs-justify="center" vs-align="center">
@@ -47,11 +47,15 @@
           </vs-dropdown>
         </vs-col>
       </vs-row>
-      <vs-row v-for="(question, index) in questions" :key="index">
-        <vs-divider v-if="index === 0" />
-        <component :is="question.type" />
-        <vs-divider />
-      </vs-row>
+    </case-card>
+      <template v-for="(question, index) in questions">
+        <case-card :key="index" class="mt-8">
+          <vs-row>
+            <component :is="question.type" />
+          </vs-row>
+        </case-card>
+      </template>
+    <case-card class="mt-8">
       <vs-row class="mt-3">
         <vs-col>
           <vs-input
@@ -115,6 +119,29 @@ export default {
     addQuestion(type) {
       this.questions.push({
         type,
+      });
+
+      let typeText = '';
+      if (type === 'Tournament') {
+        typeText = '토너먼트형';
+      }
+      if (type === 'ShortAnswer') {
+        typeText = '단답형';
+      }
+      if (type === 'LongAnswer') {
+        typeText = '장문형';
+      }
+      if (type === 'Selection') {
+        typeText = '선택형';
+      }
+      if (type === 'OXQuiz') {
+        typeText = 'OX형';
+      }
+
+      this.$vs.notify({
+        title: '문항 추가 완료',
+        text: `${typeText} 문항이 추가되었습니다. 아래를 확인하세요.`,
+        color: 'success',
       });
     },
     handleTagInput(e) {
