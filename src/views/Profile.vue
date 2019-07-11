@@ -248,13 +248,6 @@ export default {
       }, 3000);
     },
   },
-  // components: {
-  //   videoPlayer,
-  // },
-  mounted() {
-    this.wasSidebarOpen = this.$store.state.reduceButton;
-    this.$store.commit('TOGGLE_REDUCE_BUTTON', true);
-  },
   beforeDestroy() {
     if (!this.wasSidebarOpen) this.$store.commit('TOGGLE_REDUCE_BUTTON', false);
   },
