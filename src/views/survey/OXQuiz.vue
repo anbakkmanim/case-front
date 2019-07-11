@@ -19,28 +19,14 @@
               />
               <ul class="demo-alignment">
                 <li>
-                  <label class="vs-component con-vs-radio vs-radio-primary">
-                    <input name="" class="vs-radio--input" value="true" type="radio" v-model="answer">
-                    <span class="vs-radio">
-                      <span class="vs-radio--borde" style="border: 2px solid rgb(200, 200, 200);"></span>
-                      <span class="vs-radio--circle"></span>
-                    </span>
-                    <span class="vs-radio--label">O</span>
-                  </label>
+                  <vs-radio v-model="answer" vs-value="O">O</vs-radio>
                 </li>
                 <li>
-                  <label class="vs-component con-vs-radio vs-radio-primary">
-                    <input name="" class="vs-radio--input" value="false" type="radio" v-model="answer">
-                    <span class="vs-radio">
-                      <span class="vs-radio--borde" style="border: 2px solid rgb(200, 200, 200);"></span>
-                      <span class="vs-radio--circle"></span>
-                    </span>
-                    <span class="vs-radio--label">X</span>
-                  </label>
+                 <vs-radio v-model="answer" vs-value="X">X</vs-radio>
                 </li>
               </ul>
 
-              <vs-button @click="AddImage" class="m-6">이미지 추가</vs-button>
+              <vs-button @click="AddImage" class="mt-6">이미지 추가</vs-button>
               <div class=" w-full mb-2 vx-col" v-if="isAdd">
                 <file-upload
                   v-if="isSet"
@@ -49,11 +35,11 @@
                   @input-file="onAddFile"
                   @input-filter="onFilterFile"
                 >
-                  <img :src="images.length > 0 ? images[0].url : '/img/default.jpg'" class="sm:w-2/3 w-full mb-2 mt-6"/>
+                  <img :src="images.length > 0 ? images[0].url : require('@/assets/images/default.jpg')" class="sm:w-2/3 w-full mb-2 mt-6"/>
                 </file-upload>
                 <img
                   v-else
-                  :src="images.length > 0 ? images[0].url : '/img/default.jpg'"
+                  :src="images.length > 0 ? images[0].url : require('@/assets/images/default.jpg')"
                   class="sm:w-2/3 w-full mb-2 mt-6"
                 />
               </div>
@@ -110,10 +96,16 @@ export default {
         this.$validator.validateAll(step).then((result) => {
           if (result) {
             if (step === 'step1') {
-              this.$http.post('/case/addQuiz', {
-                question: this.title,
-                table: 'example',
-                type: 'ox',
+              const formData = new FormData();
+              formData.append('media', this.media);
+              formData.append('question', this.title);
+              formData.append('answer', this.answer);
+              formData.append('table', 'example');
+              formData.append('type', 'ox');
+              this.$http.post('/case/addQuiz', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
               })
                 .then(({ data }) => {
                   this.qu_idx = data.idx;
@@ -123,8 +115,11 @@ export default {
                 .catch((e) => {
                   console.error(e);
                   this.$vs.loading.close();
-                  reject(new Error('설문조사 추가 실패'));
+                  reject(new Error('퀴즈 추가 실패'));
                 });
+
+              this.$vs.loading.close();
+              resolve(true);
             } else {
               this.$vs.loading.close();
             }
@@ -146,6 +141,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style scopped>
+.align-left {
+  text-align: left;
+}
 </style>
