@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="parentx">
     <vs-sidebar
       ref="mainSidebar"
@@ -12,10 +12,18 @@
       :reduce-not-rebound="reduceNotRebound"
     >
       <div @mouseenter="sidebarMouseEntered" @mouseleave="sidebarMouseLeave">
-        <div class="header-sidebar flex items-end justify-between" slot="header">
+        <div
+          class="header-sidebar flex items-end justify-between"
+          slot="header"
+        >
           <div class="logo flex items-center">
-            <img :src="logo" alt="logo" class="w-10 mr-4" v-if="logo">
-            <span class="logo-text" v-show="isMouseEnter || !reduce" v-if="title">{{ title }}</span>
+            <img :src="logo" alt="logo" class="w-10 mr-4" v-if="logo" />
+            <span
+              class="logo-text"
+              v-show="isMouseEnter || !reduce"
+              v-if="title"
+              >{{ title }}</span
+            >
           </div>
           <div>
             <fragment v-if="showCloseButton">
@@ -53,46 +61,46 @@
           @ps-scroll-y="psSectionScroll"
         >
           <fragment v-for="(sidebarItem, index) in sidebarItems" :key="index">
-  <span
-    :key="`header-${index}`"
-    v-if="sidebarItem.header && !sidebarItemsMin"
-    class="navigation-header truncate"
-    >{{ sidebarItem.header }}</span
-  >
-  <fragment v-else-if="!sidebarItem.header">
-    <vx-sidebar-item
-      ref="sidebarLink"
-      :key="`sidebarItem-${index}`"
-      v-if="!sidebarItem.submenu"
-      :index="index"
-      :to="sidebarItem.slug != 'external' ? sidebarItem.url : ''"
-      :href="sidebarItem.slug == 'external' ? sidebarItem.url : ''"
-      :icon="sidebarItem.icon"
-      :target="sidebarItem.target"
-      :isDisabled="sidebarItem.isDisabled"
-    >
-      <span v-show="!sidebarItemsMin" class="truncate">{{
-        sidebarItem.name
-      }}</span>
-      <vs-chip
-        class="ml-auto"
-        :color="sidebarItem.tagColor"
-        v-if="sidebarItem.tag && (isMouseEnter || !reduce)"
-        >{{ sidebarItem.tag }}</vs-chip
-      >
-    </vx-sidebar-item>
-    <fragment v-else>
-      <vx-sidebar-group
-        ref="sidebarGrp"
-        :key="`group-${index}`"
-        :openHover="openGroupHover"
-        :group="sidebarItem"
-        :groupIndex="index"
-        :open="isGroupActive(sidebarItem)"
-      ></vx-sidebar-group>
-    </fragment>
-  </fragment>
-</fragment>
+            <span
+              :key="`header-${index}`"
+              v-if="sidebarItem.header && !sidebarItemsMin"
+              class="navigation-header truncate"
+              >{{ sidebarItem.header }}</span
+            >
+            <fragment v-else-if="!sidebarItem.header">
+              <vx-sidebar-item
+                ref="sidebarLink"
+                :key="`sidebarItem-${index}`"
+                v-if="!sidebarItem.submenu"
+                :index="index"
+                :to="sidebarItem.slug != 'external' ? sidebarItem.url : ''"
+                :href="sidebarItem.slug == 'external' ? sidebarItem.url : ''"
+                :icon="sidebarItem.icon"
+                :target="sidebarItem.target"
+                :isDisabled="sidebarItem.isDisabled"
+              >
+                <span v-show="!sidebarItemsMin" class="truncate">{{
+                  sidebarItem.name
+                }}</span>
+                <vs-chip
+                  class="ml-auto"
+                  :color="sidebarItem.tagColor"
+                  v-if="sidebarItem.tag && (isMouseEnter || !reduce)"
+                  >{{ sidebarItem.tag }}</vs-chip
+                >
+              </vx-sidebar-item>
+              <fragment v-else>
+                <vx-sidebar-group
+                  ref="sidebarGrp"
+                  :key="`group-${index}`"
+                  :openHover="openGroupHover"
+                  :group="sidebarItem"
+                  :groupIndex="index"
+                  :open="isGroupActive(sidebarItem)"
+                ></vx-sidebar-group>
+              </fragment>
+            </fragment>
+          </fragment>
         </VuePerfectScrollbar>
       </div>
     </vs-sidebar>
