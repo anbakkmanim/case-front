@@ -38,6 +38,10 @@ export default [
         name: '프로필',
       },
       {
+        url: '/shop',
+        name: '크레딧 상점',
+      },
+      {
         url: '/survey',
         name: '설문조사',
       },
