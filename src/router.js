@@ -38,6 +38,10 @@ export default new Router({
           component: () => import('./views/Profile.vue'),
         },
         {
+          path: '/shop',
+          component: () => import('./views/CreditShop.vue'),
+        },
+        {
           path: '/survey',
           component: () => import('./views/survey/list/SurveyList.vue'),
           meta: {
