@@ -48,13 +48,13 @@
         </vs-col>
       </vs-row>
     </case-card>
-      <template v-for="(question, index) in questions">
-        <case-card :key="index" class="mt-8">
-          <vs-row>
-            <component :is="question.type" />
-          </vs-row>
-        </case-card>
-      </template>
+    <template v-for="(question, index) in questions">
+      <case-card :key="index" class="mt-8">
+        <vs-row>
+          <component :is="question.type" />
+        </vs-row>
+      </case-card>
+    </template>
     <case-card class="mt-8">
       <vs-row class="mt-3">
         <vs-col>
