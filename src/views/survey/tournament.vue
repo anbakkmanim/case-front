@@ -34,24 +34,6 @@
               </vs-select>
             </div>
           </div>
-          <div class="vx-row align-left">
-            <div class="vx-col w-full mb-2">
-              <vs-input
-                class="mb-2 w-24"
-                label="태그 추가"
-                @keypress="handleTagInput"
-                v-model="tagInfo"
-              />
-              <vs-chip
-                color="primary"
-                @click="removeTag(index)"
-                v-for="(tag, index) in tags"
-                :key="index"
-                closable
-                >{{ tag }}</vs-chip
-              >
-            </div>
-          </div>
         </form>
       </tab-content>
 
