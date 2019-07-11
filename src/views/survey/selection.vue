@@ -29,11 +29,11 @@
               @input-file="onAddFile"
               @input-filter="onFilterFile"
             >
-              <img :src="images.length > 0 ? images[0].url : '/img/default.jpg'" class="sm:w-2/3 w-full mb-2 mt-6"/>
+              <img :src="images.length > 0 ? images[0].url : require('@/assets/images/default.jpg')" class="sm:w-2/3 w-full mb-2 mt-6"/>
             </file-upload>
             <img
               v-else
-              :src="images.length > 0 ? images[0].url : '/img/default.jpg'"
+              :src="images.length > 0 ? images[0].url : require('@/assets/images/default.jpg')"
               class="sm:w-2/3 w-full mb-2 mt-6"
             />
           </div>
