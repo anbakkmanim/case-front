@@ -22,18 +22,6 @@ export default new Router({
       component: () => import('./layouts/Main.vue'),
       children: [
         {
-          path: '/home',
-          component: () => import('./views/Home.vue'),
-        },
-        {
-          path: '/test',
-          component: () => import('./views/Test.vue'),
-        },
-        {
-          path: '/hello',
-          component: () => import('./views/Hello.vue'),
-        },
-        {
           path: '/profile',
           component: () => import('./views/Profile.vue'),
         },

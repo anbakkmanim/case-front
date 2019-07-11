@@ -24,6 +24,12 @@
                 </vs-dropdown-item>
               </vs-dropdown-group>
               <vs-dropdown-group vs-label="선다형">
+                <vs-dropdown-item @click="addQuestion('OXQuiz')">
+                  <span class="flex items-center">
+                    <feather-icon class="icon-adjust mr-2" icon="SlashIcon" />
+                    <span>OX형</span>
+                  </span>
+                </vs-dropdown-item>
                 <vs-dropdown-item @click="addQuestion('Selection')">
                   <span class="flex items-center">
                     <feather-icon class="icon-adjust mr-2" icon="CheckIcon" />
@@ -88,11 +94,12 @@ import Tournament from './tournament.vue';
 import Selection from './selection.vue';
 import ShortAnswer from './ShortAnswer.vue';
 import LongAnswer from './LongAnswer.vue';
+import OXQuiz from './OXQuiz.vue';
 
 export default {
   name: 'make-survey',
   components: {
-    Tournament, ShortAnswer, LongAnswer, Selection,
+    Tournament, ShortAnswer, LongAnswer, Selection, OXQuiz,
   },
   data() {
     return {

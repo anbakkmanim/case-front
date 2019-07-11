@@ -22,18 +22,6 @@ export default [
     icon: 'HomeIcon',
     submenu: [
       {
-        url: '/home',
-        name: '홈 화면',
-      },
-      {
-        url: '/test',
-        name: '테스트 화면',
-      },
-      {
-        url: '/hello',
-        name: '테스트 화면2',
-      },
-      {
         url: '/profile',
         name: '프로필',
       },
